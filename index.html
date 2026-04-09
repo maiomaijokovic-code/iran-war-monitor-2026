@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iran War Monitor 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Teko:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="crosshair" aria-hidden="true"></div>
+  <div class="cursor-layer" aria-hidden="true">
+    <div id="tracker-cursor" class="tracker-cursor">
+      <span class="cursor-dot"></span>
+      <span class="cursor-line cursor-line-horizontal"></span>
+      <span class="cursor-line cursor-line-vertical"></span>
+    </div>
+  </div>
+
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="brand-row">
+        <div class="brand-mark">
+          <span class="brand-icon"></span>
+          <span class="brand-name">IRAN WAR MONITOR</span>
+        </div>
+        <nav class="top-nav" aria-label="Navigazione principale">
+          <a href="#feed">Feed</a>
+          <a href="#feed">Sources</a>
+          <a href="#feed">Timeline</a>
+        </nav>
+        <div class="status-chip">
+          <span class="live-dot"></span>
+          <span>Live Node</span>
+        </div>
+      </div>
+
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Continuous conflict monitoring</p>
+          <h1>Iran War<br>Monitor 2026</h1>
+          <p class="intro">
+            Feed cronologico centralizzato con aggiornamenti verificati e accesso diretto
+            alle fonti originali.
+          </p>
+        </div>
+
+        <aside class="hero-side">
+          <div class="telemetry-card">
+            <p class="telemetry-label">Next refresh</p>
+            <strong id="next-refresh">tra 30 minuti</strong>
+          </div>
+          <div class="telemetry-grid">
+            <div>
+              <span>Last update</span>
+              <strong id="last-updated"></strong>
+            </div>
+            <div>
+              <span>Stories</span>
+              <strong id="stories-count"></strong>
+            </div>
+            <div>
+              <span>Mode</span>
+              <strong>Verified sources</strong>
+            </div>
+            <div>
+              <span>Cycle</span>
+              <strong>30 min</strong>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <main>
+      <section id="feed" class="feed-panel">
+        <div class="feed-head">
+          <div>
+            <p class="section-label">Central dispatch</p>
+            <h2>Sequenza temporale notizie</h2>
+          </div>
+          <button id="manual-refresh" class="refresh-button" type="button">Aggiorna feed</button>
+        </div>
+
+        <div id="news-feed" class="news-feed"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
