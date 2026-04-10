@@ -17,9 +17,12 @@
       cursor: pointer;
     }
     .wip-main {
-      min-height: 72vh;
+      position: fixed;
+      inset: 0;
+      z-index: 1;
       display: grid;
       place-items: center;
+      pointer-events: none;
     }
     .wip-title {
       margin: 0;
@@ -32,9 +35,13 @@
       white-space: nowrap;
       text-align: center;
     }
+    .wip-page .brand-row {
+      position: relative;
+      z-index: 3;
+    }
   </style>
 </head>
-<body>
+<body class="wip-page">
   <div class="noise"></div>
   <div class="crosshair" aria-hidden="true"></div>
 
@@ -51,7 +58,7 @@
         </nav>
         <div class="status-chip">
           <span class="live-dot"></span>
-          <span>Live Node</span>
+          <span>Online</span>
         </div>
       </div>
 
