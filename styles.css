@@ -160,6 +160,7 @@ body::after {
 
 .site-header {
   min-height: 92vh;
+  min-height: 92svh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -539,5 +540,29 @@ h2 {
 
   .sources-list {
     gap: 8px;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  body {
+    cursor: auto;
+    background-attachment: scroll;
+  }
+
+  a,
+  button {
+    cursor: pointer;
+  }
+
+  .cursor-layer {
+    display: none;
+  }
+
+  .brand-mark,
+  .top-nav,
+  .status-chip,
+  .telemetry-grid,
+  .feed-item {
+    backdrop-filter: none;
   }
 }

@@ -4,8 +4,10 @@ const newsFeed = document.getElementById("news-feed");
 const lastUpdated = document.getElementById("last-updated");
 const storiesCount = document.getElementById("stories-count");
 const nextRefresh = document.getElementById("next-refresh");
+const cycleMinutes = document.getElementById("cycle-minutes");
 const manualRefresh = document.getElementById("manual-refresh");
 const trackerCursor = document.getElementById("tracker-cursor");
+const isTouchDevice = window.matchMedia("(hover: none), (pointer: coarse)").matches;
 
 const cursorState = {
   currentX: window.innerWidth / 2,
@@ -85,6 +87,9 @@ function updateCountdown() {
 function updateMeta(payload) {
   lastUpdated.textContent = payload.generated_at ? formatDisplayTime(payload.generated_at) : "--";
   storiesCount.textContent = String((payload.stories || []).length);
+  if (cycleMinutes) {
+    cycleMinutes.textContent = `${REFRESH_INTERVAL_MINUTES} min`;
+  }
   updateCountdown();
 }
 
@@ -114,6 +119,10 @@ async function loadStories() {
 }
 
 function animateCursor() {
+  if (!trackerCursor) {
+    return;
+  }
+
   cursorState.currentX += (cursorState.targetX - cursorState.currentX) * 0.38;
   cursorState.currentY += (cursorState.targetY - cursorState.currentY) * 0.38;
   trackerCursor.style.transform = `translate(${cursorState.currentX}px, ${cursorState.currentY}px)`;
@@ -124,17 +133,21 @@ manualRefresh.addEventListener("click", () => {
   loadStories();
 });
 
-window.addEventListener("mousemove", (event) => {
-  cursorState.targetX = event.clientX;
-  cursorState.targetY = event.clientY;
-  trackerCursor.classList.add("is-visible");
-});
+if (!isTouchDevice && trackerCursor) {
+  window.addEventListener("mousemove", (event) => {
+    cursorState.targetX = event.clientX;
+    cursorState.targetY = event.clientY;
+    trackerCursor.classList.add("is-visible");
+  });
 
-window.addEventListener("mouseleave", () => {
-  trackerCursor.classList.remove("is-visible");
-});
+  window.addEventListener("mouseleave", () => {
+    trackerCursor.classList.remove("is-visible");
+  });
+}
 
 loadStories();
-animateCursor();
+if (!isTouchDevice) {
+  animateCursor();
+}
 setInterval(updateCountdown, 60 * 1000);
 setInterval(loadStories, REFRESH_INTERVAL_MINUTES * 60 * 1000);
