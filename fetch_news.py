@@ -22,6 +22,7 @@ TIMEOUT_SECONDS = 20
 MAX_ITEMS_PER_SOURCE = 3
 MAX_SUMMARY_LENGTH = 260
 ARTICLE_FETCH_TIMEOUT_SECONDS = 8
+CRISIS_START_DAY = "2026-02-28"
 MOJIBAKE_MARKERS = (
     "Ã",
     "Â",
@@ -658,6 +659,8 @@ def parse_rss(xml_text: str, source_name: str) -> list[dict]:
             continue
 
         iso_time, sort_time = parse_datetime(pub_date)
+        if iso_time[:10] < CRISIS_START_DAY:
+            continue
         items.append(
             {
                 "source": source_name,
@@ -723,6 +726,7 @@ def build_payload() -> dict:
     return {
         "generated_at": generated_at,
         "story_count": len(stories),
+        "coverage_start_day": CRISIS_START_DAY,
         "sources": [source.name for source in SOURCES],
         "errors": errors,
         "stories": stories,

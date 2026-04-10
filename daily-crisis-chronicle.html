@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Crisis Chronicle | Iran War Monitor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Teko:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20260410g">
+  <link rel="stylesheet" href="daily-crisis-chronicle.css?v=20260410h">
+  <link rel="stylesheet" href="daily-nav.css?v=20260410d">
+</head>
+<body>
+  <div class="background-layer" aria-hidden="true"></div>
+  <div class="noise"></div>
+  <div class="crosshair" aria-hidden="true"></div>
+  <div class="cursor-layer" aria-hidden="true">
+    <div id="tracker-cursor" class="tracker-cursor">
+      <span class="cursor-dot"></span>
+      <span class="cursor-line cursor-line-horizontal"></span>
+      <span class="cursor-line cursor-line-vertical"></span>
+    </div>
+  </div>
+
+  <div class="page-shell daily-shell">
+    <header class="site-header daily-header">
+      <div class="brand-row">
+        <div class="brand-mark">
+          <span class="brand-icon"></span>
+          <span class="brand-name">IRAN WAR MONITOR</span>
+        </div>
+        <nav class="top-nav top-nav-triple" aria-label="Navigazione principale">
+          <a href="index.html#feed">Feed</a>
+          <a href="daily-crisis-chronicle.html" class="nav-daily-stack" aria-current="page" aria-label="Daily Crisis Chronicle">
+            <span>Daily</span>
+            <span>Crisis</span>
+            <span>Chronicle</span>
+          </a>
+          <a href="work-in-progress.html">Index</a>
+        </nav>
+        <div class="status-chip">
+          <span class="live-dot"></span>
+          <span>Online</span>
+        </div>
+      </div>
+
+      <div class="daily-hero">
+        <div class="daily-hero-copy">
+          <p class="eyebrow">Daily chronicle of the Iran crisis</p>
+          <h1>Daily Crisis<br>Chronicle</h1>
+          <p class="intro">
+            Rassegna giornaliera della crisi iraniana 2026, limitata agli eventi dal 28 febbraio 2026 in poi:
+            ogni blocco chiude la giornata con una sintesi argomentata, una lente analitica stabile
+            e una lettura evolutiva rispetto ai giorni precedenti.
+          </p>
+        </div>
+
+        <aside class="daily-hero-side">
+          <div class="telemetry-card">
+            <p class="telemetry-label">Modalita</p>
+            <strong>Daily crisis / manual-driven</strong>
+          </div>
+          <div class="telemetry-grid daily-top-grid">
+            <div>
+              <span>Periodo</span>
+              <strong id="daily-period">--</strong>
+            </div>
+            <div>
+              <span>Giornate</span>
+              <strong id="daily-days-count">--</strong>
+            </div>
+            <div>
+              <span>Notizie</span>
+              <strong id="daily-stories-count">--</strong>
+            </div>
+            <div>
+              <span>Filtro</span>
+              <strong id="daily-filter-note">dal 28/02/2026</strong>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <main class="daily-layout">
+      <aside class="daily-timeline-panel">
+        <div class="daily-panel-head">
+          <p class="section-label">Timeline</p>
+          <h2>Giornate</h2>
+        </div>
+        <nav id="daily-timeline" class="daily-timeline"></nav>
+      </aside>
+
+      <section id="daily-sections" class="daily-sections" aria-live="polite"></section>
+
+      <aside class="daily-evolution-panel">
+        <div class="daily-panel-head">
+          <p class="section-label">Evoluzione</p>
+          <h2>Quadro crisi</h2>
+        </div>
+        <div id="daily-evolution" class="daily-evolution"></div>
+      </aside>
+    </main>
+  </div>
+
+  <script src="app-daily-crisis-chronicle.js?v=20260410h"></script>
+</body>
+</html>
