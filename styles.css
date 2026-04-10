@@ -24,19 +24,50 @@ body {
   cursor: none;
   color: var(--text);
   font-family: "Rajdhani", sans-serif;
-  background: url("grunge-wall-texture.jpg?v=20260410b") center center / cover no-repeat;
+  background: url("photo-ground-texture-pattern (1).jpg?v=20260410d") center center / cover no-repeat;
 }
 
 body::before {
-  content: none;
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.028) 0,
+      rgba(255, 255, 255, 0.028) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+  opacity: 0.18;
 }
 
 body::after {
-  content: none;
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(8, 9, 10, 0.42), rgba(5, 6, 7, 0.62)),
+    linear-gradient(90deg, rgba(4, 4, 5, 0.2), transparent 18%, transparent 82%, rgba(4, 4, 5, 0.2)),
+    radial-gradient(circle at center, transparent 44%, rgba(0, 0, 0, 0.28) 100%);
 }
 
 .noise {
-  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.12;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.018) 0 1px, transparent 1px 2px),
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.028), transparent 0 14%),
+    radial-gradient(circle at 78% 26%, rgba(255, 255, 255, 0.024), transparent 0 12%);
+  mix-blend-mode: screen;
 }
 
 .cursor-layer {
@@ -109,7 +140,7 @@ body::after {
 .crosshair::before,
 .crosshair::after {
   content: "";
-  position: absolute;
+  position: fixed;
   background: rgba(214, 222, 228, 0.16);
   box-shadow: 0 0 18px rgba(255, 255, 255, 0.03);
 }
@@ -125,7 +156,7 @@ body::after {
   left: 50%;
   top: 0;
   width: 1px;
-  height: 100%;
+  height: 100vh;
 }
 
 .page-shell {
@@ -731,6 +762,14 @@ h2 {
     background-position: center top;
     background-size: auto 100vh;
     background-repeat: repeat-y;
+  }
+
+  body::before {
+    opacity: 0.14;
+  }
+
+  .noise {
+    opacity: 0.09;
   }
 
   a,
