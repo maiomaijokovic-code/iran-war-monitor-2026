@@ -82,6 +82,50 @@ function fallbackCommentary(story) {
   return "Il quadro resta instabile e ad alta volatilità. Conta soprattutto la continuità degli eventi nel brevissimo periodo.";
 }
 
+function isGenericSubtitle(text = "") {
+  const lowered = text.toLowerCase().trim();
+  if (!lowered) {
+    return true;
+  }
+
+  const genericMarkers = [
+    "coverage updated",
+    "updated coverage",
+    "complete coverage",
+    "full coverage",
+    "aggregated from sources",
+    "google news",
+    "copertura di notizie aggiornata",
+    "copertura aggiornata",
+    "copertura completa",
+    "aggregata da fonti",
+    "aggiornata e completa"
+  ];
+
+  return genericMarkers.some((marker) => lowered.includes(marker));
+}
+
+function chooseSubtitle(story) {
+  const candidates = [
+    story.subtitle_it,
+    story.subtitle,
+    story.lead_sentence_it,
+    story.lead_sentence,
+    story.comment_it,
+    story.summary_it,
+    story.summary
+  ];
+
+  for (const candidate of candidates) {
+    if (!candidate || isGenericSubtitle(candidate)) {
+      continue;
+    }
+    return candidate;
+  }
+
+  return "Apri il link per leggere il testo completo.";
+}
+
 function renderStories(stories) {
   if (!stories.length) {
     newsFeed.innerHTML = `
@@ -103,7 +147,7 @@ function renderStories(stories) {
             <a class="feed-link" href="${story.url}" target="_blank" rel="noreferrer">
               ${cleanTitleForDisplay(story.title_it || story.title || "", story.source || "", story.url || "")}
             </a>
-            <p class="feed-note">${story.subtitle_it || story.subtitle || story.lead_sentence_it || story.lead_sentence || story.comment_it || story.summary_it || story.summary || "Apri il link per leggere il testo completo."}</p>
+            <p class="feed-note">${chooseSubtitle(story)}</p>
           </div>
         </article>
       `

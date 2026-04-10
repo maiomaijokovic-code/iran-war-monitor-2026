@@ -290,6 +290,30 @@ def extract_subtitle(text: str) -> str:
     return clean
 
 
+def is_generic_subtitle(text: str) -> bool:
+    lowered = text.lower().strip()
+    if not lowered:
+        return True
+
+    generic_markers = (
+        "coverage updated",
+        "updated coverage",
+        "complete coverage",
+        "full coverage",
+        "aggregated from sources",
+        "google news",
+        "copertura di notizie aggiornata",
+        "copertura aggiornata",
+        "copertura completa",
+        "aggregata da fonti",
+        "aggiornata e completa",
+        "leggi l'articolo completo",
+        "read the full article",
+    )
+
+    return any(marker in lowered for marker in generic_markers)
+
+
 def subtitle_from_article(url: str) -> str:
     try:
         html = fetch_text(url, timeout=ARTICLE_FETCH_TIMEOUT_SECONDS)
@@ -305,7 +329,7 @@ def subtitle_from_article(url: str) -> str:
         meta_match = re.search(pattern, html, flags=re.IGNORECASE)
         if meta_match:
             subtitle = extract_subtitle(meta_match.group(1))
-            if len(subtitle) >= 40:
+            if len(subtitle) >= 40 and not is_generic_subtitle(subtitle):
                 return subtitle
 
     subtitle_patterns = [
@@ -317,7 +341,7 @@ def subtitle_from_article(url: str) -> str:
         match = re.search(pattern, html, flags=re.IGNORECASE | re.DOTALL)
         if match:
             subtitle = extract_subtitle(match.group(1))
-            if len(subtitle) >= 40:
+            if len(subtitle) >= 40 and not is_generic_subtitle(subtitle):
                 return subtitle
 
     body = re.sub(r"<script[\s\S]*?</script>", " ", html, flags=re.IGNORECASE)
@@ -330,6 +354,8 @@ def subtitle_from_article(url: str) -> str:
             continue
         lowered = subtitle.lower()
         if any(skip in lowered for skip in ("cookie", "subscribe", "newsletter", "advertis", "consent")):
+            continue
+        if is_generic_subtitle(subtitle):
             continue
         return subtitle
 
@@ -426,8 +452,9 @@ def enrich_story(story: dict) -> dict:
     story["title_it"] = cleaned_title_it
     story["summary_it"] = summary_it or story["summary"]
     subtitle = subtitle_from_article(story["url"])
-    story["subtitle"] = subtitle or story["summary"]
-    story["subtitle_it"] = translate_to_italian(story["subtitle"]) if story["subtitle"] else story["summary_it"]
+    clean_summary = "" if is_generic_subtitle(story["summary"]) else story["summary"]
+    story["subtitle"] = subtitle or clean_summary
+    story["subtitle_it"] = translate_to_italian(story["subtitle"]) if story["subtitle"] else ""
     story["comment_it"] = story["subtitle_it"]
     return story
 
