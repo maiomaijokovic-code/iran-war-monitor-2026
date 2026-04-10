@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 import re
 import urllib.error
 import urllib.parse
@@ -165,38 +166,139 @@ def cleanup_title(title: str, source_name: str, link: str) -> str:
     return clean.strip()
 
 
-def infer_commentary(summary_it: str, title_it: str) -> str:
-    text = f"{title_it} {summary_it}".lower()
+def pick_variant(seed: str, options: list[str]) -> str:
+    if not options:
+        return ""
+    digest = hashlib.md5(seed.encode("utf-8")).hexdigest()
+    return options[int(digest[:8], 16) % len(options)]
 
-    if any(word in text for word in ("colloqui", "negozi", "accord", "ceasefire", "sospendere", "tregua")):
-        return (
-            "Il segnale è soprattutto diplomatico. Se il canale negoziale regge, "
-            "la pressione militare può rallentare nel breve, ma resta alta la volatilità politica."
-        )
-    if any(word in text for word in ("hormuz", "nave", "tanker", "maritt", "stretto", "ais")):
-        return (
-            "Il focus è marittimo-operativo. Ogni frizione su Hormuz o sulle rotte "
-            "commerciali può produrre effetti rapidi su sicurezza regionale e costi energetici."
-        )
-    if any(word in text for word in ("missil", "drone", "bombard", "raid", "attacco", "strike")):
-        return (
-            "Il contenuto indica una dinamica di escalation tattica. "
-            "Nel breve conta capire se l'evento resta isolato o apre una sequenza di ritorsioni."
-        )
-    if any(word in text for word in ("civili", "osped", "evacu", "sfoll", "morti", "feriti")):
-        return (
-            "Il punto centrale è il rischio civile. Se questi segnali aumentano, "
-            "cresce anche la probabilità di pressione diplomatica e narrativa internazionale."
-        )
-    if any(word in text for word in ("sanzion", "tariff", "petrol", "export", "energia", "prezzo")):
-        return (
-            "La notizia suggerisce un canale di pressione economica oltre a quello militare. "
-            "Da monitorare gli effetti su energia, rotte commerciali e tenuta politica regionale."
-        )
-    return (
-        "Il dato rafforza un quadro ancora instabile, con segnali misti tra deterrenza e negoziazione. "
-        "La variabile chiave resta la continuità degli eventi nelle prossime 24-48 ore."
-    )
+
+def detect_actor(text: str) -> str:
+    actor_map = [
+        (("stati uniti", "usa", "washington", "trump", "pentagono"), "gli Stati Uniti"),
+        (("iran", "teheran", "tehran", "pasdaran"), "l'Iran"),
+        (("israele", "israel", "netanyahu", "idf"), "Israele"),
+        (("cina", "beijing", "pechino"), "la Cina"),
+        (("russia", "mosca", "moscow"), "la Russia"),
+        (("europa", "ue", "bruxelles", "european union"), "l'Unione Europea"),
+        (("houthi", "yemen"), "gli Houthi"),
+        (("hezbollah", "libano", "lebanon"), "Hezbollah"),
+    ]
+    for words, label in actor_map:
+        if any(word in text for word in words):
+            return label
+    return "gli attori coinvolti"
+
+
+def detect_location(text: str) -> str:
+    location_map = [
+        (("hormuz", "stretto"), "nello Stretto di Hormuz"),
+        (("golfo", "gulf"), "nell'area del Golfo"),
+        (("teheran", "tehran"), "attorno a Teheran"),
+        (("natanz",), "attorno a Natanz"),
+        (("isfahan",), "nell'area di Isfahan"),
+        (("libano", "lebanon"), "sul fronte libanese"),
+        (("siria", "syria"), "sul fronte siriano"),
+        (("iraq", "iraq"), "sul fronte iracheno"),
+        (("yemen",), "sul fronte yemenita"),
+        (("mar rosso", "red sea"), "nel Mar Rosso"),
+    ]
+    for words, label in location_map:
+        if any(word in text for word in words):
+            return label
+    return "nel teatro regionale"
+
+
+def detect_theme(text: str) -> str:
+    theme_checks = [
+        ("diplomacy", ("colloqui", "negozi", "accord", "tregua", "ceasefire", "mediare", "mediat")),
+        ("maritime", ("hormuz", "nave", "tanker", "maritt", "stretto", "ais", "shipping", "cargo")),
+        ("military", ("missil", "drone", "bombard", "raid", "attacco", "strike", "intercett")),
+        ("civilian", ("civili", "osped", "evacu", "sfoll", "morti", "feriti", "rifugiat")),
+        ("economic", ("sanzion", "tariff", "petrol", "export", "energia", "prezzo", "oil")),
+    ]
+    for theme, words in theme_checks:
+        if any(word in text for word in words):
+            return theme
+    return "strategic"
+
+
+def infer_commentary(summary_it: str, title_it: str, source_name: str) -> str:
+    text = f"{title_it} {summary_it}".lower()
+    actor = detect_actor(text)
+    location = detect_location(text)
+    theme = detect_theme(text)
+    seed = f"{source_name}|{title_it}|{summary_it}"
+
+    intros = {
+        "diplomacy": [
+            f"Il punto chiave è che {actor} stanno cercando di spostare il confronto su un piano negoziale {location}.",
+            f"La notizia segnala soprattutto un passaggio diplomatico, con {actor} che provano a ridefinire i margini del confronto {location}.",
+            f"Qui il dato rilevante è l'apertura di una finestra politica: {actor} cercano di contenere l'escalation {location}.",
+        ],
+        "maritime": [
+            f"Il baricentro della notizia è marittimo: la pressione {location} tocca direttamente rotte, transiti e percezione del rischio.",
+            f"Il segnale più importante riguarda la sicurezza dei flussi commerciali {location}, dove ogni frizione può produrre effetti rapidi.",
+            f"Questa è soprattutto una notizia di vulnerabilità marittima: ciò che accade {location} pesa oltre il singolo episodio.",
+        ],
+        "military": [
+            f"Il contenuto indica una dinamica di escalation tattica, con {actor} che alzano la pressione {location}.",
+            f"Qui il dato principale è operativo-militare: {actor} testano soglie e deterrenza {location}.",
+            f"La notizia suggerisce un incremento della pressione sul piano militare, con effetti immediati {location}.",
+        ],
+        "civilian": [
+            f"Il punto centrale è il rischio per la popolazione civile {location}, più che il solo valore militare dell'episodio.",
+            f"La notizia pesa soprattutto sul piano umanitario: i costi civili {location} rischiano di ridefinire anche la risposta politica.",
+            f"Il profilo più sensibile qui è civile: ciò che accade {location} può amplificare pressione diplomatica e narrativa.",
+        ],
+        "economic": [
+            f"Il valore della notizia è nel canale economico: {actor} incidono su prezzi, approvvigionamenti e aspettative {location}.",
+            f"Qui non conta solo il piano politico, ma l'effetto economico che può irradiarsi {location} e oltre.",
+            f"La notizia segnala una pressione economica indiretta: ciò che si muove {location} può riflettersi su energia e commercio.",
+        ],
+        "strategic": [
+            f"La notizia rafforza un quadro regionale ancora instabile, con {actor} sotto pressione {location}.",
+            f"Il punto più utile da osservare è come {actor} ridefiniscono il quadro strategico {location}.",
+            f"Il dato va letto come un segnale di riequilibrio incompleto, con effetti ancora aperti {location}.",
+        ],
+    }
+
+    implications = {
+        "diplomacy": [
+            "La variabile decisiva adesso è capire se alle dichiarazioni seguiranno misure concrete di de-escalation nelle prossime 24-48 ore.",
+            "Se questo canale regge, può rallentare la spirale immediata; se fallisce, il ritorno alla pressione militare sarebbe rapido.",
+            "Il passaggio successivo da monitorare è la tenuta del tavolo politico, non solo la retorica pubblica.",
+        ],
+        "maritime": [
+            "Da monitorare soprattutto transiti, deviazioni di rotta e costo percepito del rischio commerciale nelle prossime ore.",
+            "L'effetto sistemico non è solo locale: se il segnale si ripete, possono crescere rapidamente stress logistico ed energia.",
+            "Il vero test sarà vedere se l'episodio resta isolato o modifica i comportamenti degli operatori marittimi.",
+        ],
+        "military": [
+            "Nel breve conta capire se l'episodio resta isolato o apre una sequenza di risposta e contro-risposta.",
+            "Il rischio non è solo il singolo evento, ma la normalizzazione di una soglia più alta di confronto.",
+            "Il prossimo indicatore utile è la continuità operativa: una replica a stretto giro cambierebbe la lettura strategica.",
+        ],
+        "civilian": [
+            "Se questi segnali aumentano, cresce anche la probabilità di pressione diplomatica esterna e polarizzazione narrativa.",
+            "Il passaggio decisivo sarà verificare se l'impatto civile resta periferico o diventa un elemento centrale della crisi.",
+            "Più dei movimenti militari, qui conta la capacità degli attori di contenere i costi umani e simbolici.",
+        ],
+        "economic": [
+            "Il prossimo passaggio da seguire è se il segnale resta retorico o si traduce in effetti misurabili su energia e supply chain.",
+            "Se il tema si consolida, l'impatto può uscire rapidamente dal piano regionale e riflettersi su mercati e traffici.",
+            "La chiave interpretativa è distinguere tra pressione negoziale e danno economico effettivo.",
+        ],
+        "strategic": [
+            "La chiave resta la continuità degli eventi: senza follow-up, il segnale pesa meno; con ripetizione, cambia il quadro.",
+            "Per capire il valore reale della notizia bisogna osservare se produce imitazione, allineamento o reazione tra attori vicini.",
+            "Nel breve il punto non è solo l'episodio, ma la sua capacità di spostare aspettative e postura regionale.",
+        ],
+    }
+
+    first = pick_variant(seed + "|intro", intros[theme])
+    second = pick_variant(seed + "|implication", implications[theme])
+    return f"{first} {second}"
 
 
 def translate_to_italian(text: str) -> str:
@@ -286,7 +388,7 @@ def enrich_story(story: dict) -> dict:
     cleaned_title_it = cleanup_title(title_it or story["title"], story["source"], story["url"])
     story["title_it"] = cleaned_title_it
     story["summary_it"] = summary_it or story["summary"]
-    story["comment_it"] = infer_commentary(story["summary_it"], story["title_it"])
+    story["comment_it"] = infer_commentary(story["summary_it"], story["title_it"], story["source"])
     return story
 
 
