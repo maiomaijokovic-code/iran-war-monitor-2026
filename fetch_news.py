@@ -281,12 +281,22 @@ def extract_first_sentence(text: str) -> str:
     return clean[:220].rstrip()
 
 
-def first_sentence_from_article(url: str) -> str:
+def extract_subtitle(text: str) -> str:
+    clean = re.sub(r"\s+", " ", strip_html(text)).strip()
+    if not clean:
+        return ""
+    if len(clean) > 360:
+        return clean[:360].rstrip()
+    return clean
+
+
+def subtitle_from_article(url: str) -> str:
     try:
         html = fetch_text(url, timeout=ARTICLE_FETCH_TIMEOUT_SECONDS)
     except Exception:
         return ""
 
+    html = re.sub(r"[\r\n\t]+", " ", html)
     meta_patterns = [
         r'<meta[^>]+property=["\']og:description["\'][^>]+content=["\']([^"\']+)["\']',
         r'<meta[^>]+name=["\']description["\'][^>]+content=["\']([^"\']+)["\']',
@@ -294,22 +304,34 @@ def first_sentence_from_article(url: str) -> str:
     for pattern in meta_patterns:
         meta_match = re.search(pattern, html, flags=re.IGNORECASE)
         if meta_match:
-            sentence = extract_first_sentence(meta_match.group(1))
-            if len(sentence) >= 30:
-                return sentence
+            subtitle = extract_subtitle(meta_match.group(1))
+            if len(subtitle) >= 40:
+                return subtitle
+
+    subtitle_patterns = [
+        r'<p[^>]+class=["\'][^"\']*(?:subtitle|standfirst|deck|subheadline|headline__sub|article-subtitle|article__excerpt|entry-summary|post-excerpt|article__standfirst)[^"\']*["\'][^>]*>(.*?)</p>',
+        r'<div[^>]+class=["\'][^"\']*(?:subtitle|standfirst|deck|subheadline|headline__sub|article-subtitle|article__excerpt|entry-summary|post-excerpt|article__standfirst)[^"\']*["\'][^>]*>(.*?)</div>',
+        r'<h2[^>]+class=["\'][^"\']*(?:subtitle|standfirst|deck|subheadline|headline__sub|article-subtitle)[^"\']*["\'][^>]*>(.*?)</h2>',
+    ]
+    for pattern in subtitle_patterns:
+        match = re.search(pattern, html, flags=re.IGNORECASE | re.DOTALL)
+        if match:
+            subtitle = extract_subtitle(match.group(1))
+            if len(subtitle) >= 40:
+                return subtitle
 
     body = re.sub(r"<script[\s\S]*?</script>", " ", html, flags=re.IGNORECASE)
     body = re.sub(r"<style[\s\S]*?</style>", " ", body, flags=re.IGNORECASE)
     paragraphs = re.findall(r"<p[^>]*>(.*?)</p>", body, flags=re.IGNORECASE | re.DOTALL)
 
     for para in paragraphs:
-        sentence = extract_first_sentence(para)
-        if len(sentence) < 35:
+        subtitle = extract_subtitle(para)
+        if len(subtitle) < 40:
             continue
-        lowered = sentence.lower()
+        lowered = subtitle.lower()
         if any(skip in lowered for skip in ("cookie", "subscribe", "newsletter", "advertis", "consent")):
             continue
-        return sentence
+        return subtitle
 
     return ""
 
@@ -403,10 +425,10 @@ def enrich_story(story: dict) -> dict:
     cleaned_title_it = cleanup_title(title_it or story["title"], story["source"], story["url"])
     story["title_it"] = cleaned_title_it
     story["summary_it"] = summary_it or story["summary"]
-    lead_sentence = first_sentence_from_article(story["url"])
-    story["lead_sentence"] = lead_sentence or story["summary"]
-    story["lead_sentence_it"] = translate_to_italian(story["lead_sentence"]) if story["lead_sentence"] else story["summary_it"]
-    story["comment_it"] = story["lead_sentence_it"]
+    subtitle = subtitle_from_article(story["url"])
+    story["subtitle"] = subtitle or story["summary"]
+    story["subtitle_it"] = translate_to_italian(story["subtitle"]) if story["subtitle"] else story["summary_it"]
+    story["comment_it"] = story["subtitle_it"]
     return story
 
 
