@@ -11,6 +11,7 @@ from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 from html import unescape
 from pathlib import Path
+from urllib.parse import urlparse
 
 
 ROOT = Path(__file__).resolve().parent
@@ -129,6 +130,75 @@ def summarize(value: str) -> str:
     return f"{clean[:MAX_SUMMARY_LENGTH].rstrip()}..."
 
 
+def build_source_markers(source_name: str, link: str) -> set[str]:
+    markers = {source_name.lower().strip()}
+
+    try:
+        host = urlparse(link).hostname or ""
+    except Exception:
+        host = ""
+
+    if host:
+        host = host.lower().replace("www.", "")
+        markers.add(host)
+        root = host.split(".")[0].strip()
+        if root:
+            markers.add(root)
+    return {m for m in markers if m}
+
+
+def cleanup_title(title: str, source_name: str, link: str) -> str:
+    clean = strip_html(title)
+    markers = build_source_markers(source_name, link)
+    separators = (" - ", " – ", " — ", " | ")
+
+    for separator in separators:
+        if separator not in clean:
+            continue
+        head, tail = clean.rsplit(separator, 1)
+        tail_norm = tail.lower().strip()
+        if not tail_norm:
+            continue
+        if "." in tail_norm or any(marker in tail_norm for marker in markers):
+            return head.strip()
+
+    return clean.strip()
+
+
+def infer_commentary(summary_it: str, title_it: str) -> str:
+    text = f"{title_it} {summary_it}".lower()
+
+    if any(word in text for word in ("colloqui", "negozi", "accord", "ceasefire", "sospendere", "tregua")):
+        return (
+            "Commento: il segnale e soprattutto diplomatico. Se il canale negoziale regge, "
+            "la pressione militare puo rallentare nel breve, ma resta alta la volatilita politica."
+        )
+    if any(word in text for word in ("hormuz", "nave", "tanker", "maritt", "stretto", "ais")):
+        return (
+            "Commento: il focus e marittimo-operativo. Ogni frizione su Hormuz o sulle rotte "
+            "commerciali puo produrre effetti rapidi su sicurezza regionale e costi energetici."
+        )
+    if any(word in text for word in ("missil", "drone", "bombard", "raid", "attacco", "strike")):
+        return (
+            "Commento: il contenuto indica una dinamica di escalation tattica. "
+            "Nel breve conta capire se l'evento resta isolato o apre una sequenza di ritorsioni."
+        )
+    if any(word in text for word in ("civili", "osped", "evacu", "sfoll", "morti", "feriti")):
+        return (
+            "Commento: il punto centrale e il rischio civile. Se questi segnali aumentano, "
+            "cresce anche la probabilita di pressione diplomatica e narrativa internazionale."
+        )
+    if any(word in text for word in ("sanzion", "tariff", "petrol", "export", "energia", "prezzo")):
+        return (
+            "Commento: la notizia suggerisce un canale di pressione economica oltre a quello militare. "
+            "Da monitorare gli effetti su energia, rotte commerciali e tenuta politica regionale."
+        )
+    return (
+        "Commento: il dato rafforza un quadro ancora instabile, con segnali misti tra deterrenza e negoziazione. "
+        "La variabile chiave resta la continuita degli eventi nelle prossime 24-48 ore."
+    )
+
+
 def translate_to_italian(text: str) -> str:
     if not text:
         return ""
@@ -181,10 +251,11 @@ def parse_rss(xml_text: str, source_name: str) -> list[dict]:
     items: list[dict] = []
 
     for item in root.findall(".//item"):
-        title = strip_html(item.findtext("title", default=""))
+        raw_title = strip_html(item.findtext("title", default=""))
         description = strip_html(item.findtext("description", default=""))
         link = strip_html(item.findtext("link", default=""))
         pub_date = item.findtext("pubDate", default="") or item.findtext("published", default="")
+        title = cleanup_title(raw_title, source_name, link)
 
         if not title or not link:
             continue
@@ -212,8 +283,10 @@ def parse_rss(xml_text: str, source_name: str) -> list[dict]:
 def enrich_story(story: dict) -> dict:
     title_it = translate_to_italian(story["title"])
     summary_it = translate_to_italian(story["summary"])
-    story["title_it"] = title_it or story["title"]
+    cleaned_title_it = cleanup_title(title_it or story["title"], story["source"], story["url"])
+    story["title_it"] = cleaned_title_it
     story["summary_it"] = summary_it or story["summary"]
+    story["comment_it"] = infer_commentary(story["summary_it"], story["title_it"])
     return story
 
 

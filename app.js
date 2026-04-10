@@ -39,6 +39,49 @@ function formatDisplayTime(value) {
   }).format(date);
 }
 
+function cleanTitleForDisplay(title = "", source = "", url = "") {
+  const separators = [" - ", " – ", " — ", " | "];
+  const sourceLower = source.toLowerCase();
+  let host = "";
+
+  try {
+    host = new URL(url).hostname.replace(/^www\./, "").toLowerCase();
+  } catch (error) {
+    host = "";
+  }
+
+  for (const separator of separators) {
+    if (!title.includes(separator)) {
+      continue;
+    }
+    const parts = title.split(separator);
+    const tail = (parts[parts.length - 1] || "").trim().toLowerCase();
+    if (!tail) {
+      continue;
+    }
+    if (tail.includes(".") || (sourceLower && tail.includes(sourceLower)) || (host && tail.includes(host))) {
+      return parts.slice(0, -1).join(separator).trim();
+    }
+  }
+
+  return title.trim();
+}
+
+function fallbackCommentary(story) {
+  const text = `${story.title_it || story.title || ""} ${story.summary_it || story.summary || ""}`.toLowerCase();
+
+  if (text.includes("hormuz") || text.includes("maritt") || text.includes("tanker")) {
+    return "Commento: il nodo principale e marittimo. Se il rischio su rotte e transiti cresce, puo aumentare rapidamente la pressione regionale.";
+  }
+  if (text.includes("colloqui") || text.includes("negoz") || text.includes("accord")) {
+    return "Commento: emerge una finestra diplomatica, ma resta fragile. Il punto chiave e capire se alle parole seguono segnali operativi coerenti.";
+  }
+  if (text.includes("attacco") || text.includes("missil") || text.includes("drone") || text.includes("bombard")) {
+    return "Commento: indicazione di escalation tattica. Va monitorata la probabilita di risposta a catena nelle prossime 24-48 ore.";
+  }
+  return "Commento: il quadro resta instabile e ad alta volatilita. Conta soprattutto la continuita degli eventi nel brevissimo periodo.";
+}
+
 function renderStories(stories) {
   if (!stories.length) {
     newsFeed.innerHTML = `
@@ -58,9 +101,9 @@ function renderStories(stories) {
           <div class="feed-body">
             <p class="feed-source">${story.source}</p>
             <a class="feed-link" href="${story.url}" target="_blank" rel="noreferrer">
-              ${story.title_it || story.title}
+              ${cleanTitleForDisplay(story.title_it || story.title || "", story.source || "", story.url || "")}
             </a>
-            <p class="feed-note">${story.summary_it || story.summary || "Apri il link per leggere la notizia completa."}</p>
+            <p class="feed-note">${story.comment_it || fallbackCommentary(story)}</p>
           </div>
         </article>
       `
@@ -158,12 +201,7 @@ function askAndStoreToken() {
   return cleanToken;
 }
 
-async function triggerRemoteUpdate() {
-  let token = getActionsToken();
-  if (!token) {
-    token = askAndStoreToken();
-  }
-
+async function triggerRemoteUpdate(token) {
   if (!token) {
     return false;
   }
@@ -217,13 +255,14 @@ function animateCursor() {
 
 manualRefresh.addEventListener("click", async () => {
   const previousGeneratedAt = latestGeneratedAt;
+  const tokenFromClick = getActionsToken() || askAndStoreToken();
   manualRefresh.disabled = true;
 
   try {
     setRefreshStatus("Aggiornamento locale in corso...");
     await loadStories();
 
-    const workflowTriggered = await triggerRemoteUpdate().catch(() => false);
+    const workflowTriggered = await triggerRemoteUpdate(tokenFromClick).catch(() => false);
     if (!workflowTriggered) {
       setRefreshStatus("Refresh locale completato. Per aggiornare prima dei 10 minuti, inserisci un token GitHub Actions.");
       return;
