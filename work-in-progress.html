@@ -27,13 +27,15 @@
     .wip-title {
       margin: 0;
       font-family: "Teko", sans-serif;
-      font-size: clamp(4.4rem, 11vw, 8.8rem);
+      font-size: clamp(3.8rem, 9.6vw, 8.4rem);
       font-weight: 600;
       line-height: 0.9;
       letter-spacing: -0.02em;
       text-transform: uppercase;
-      white-space: nowrap;
       text-align: center;
+    }
+    .wip-title span {
+      display: block;
     }
     .wip-page .brand-row {
       position: relative;
@@ -63,7 +65,11 @@
       </div>
 
       <main class="wip-main">
-        <h1 class="wip-title">Work in progress</h1>
+        <h1 class="wip-title">
+          <span>Work</span>
+          <span>In</span>
+          <span>Progress</span>
+        </h1>
       </main>
     </header>
   </div>
