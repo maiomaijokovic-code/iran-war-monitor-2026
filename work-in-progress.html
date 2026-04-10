@@ -3,52 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Work In Progress</title>
+  <title>Index | Iran War Monitor</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Teko:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <style>
-    body {
-      cursor: auto;
-    }
-    a,
-    button {
-      cursor: pointer;
-    }
-    .wip-main {
-      position: fixed;
-      inset: 0;
-      z-index: 1;
-      display: grid;
-      place-items: center;
-      pointer-events: none;
-    }
-    .wip-title {
-      margin: 0;
-      font-family: "Teko", sans-serif;
-      font-size: clamp(3.8rem, 9.6vw, 8.4rem);
-      font-weight: 600;
-      line-height: 0.9;
-      letter-spacing: -0.02em;
-      text-transform: uppercase;
-      text-align: center;
-    }
-    .wip-title span {
-      display: block;
-    }
-    .wip-page .brand-row {
-      position: relative;
-      z-index: 3;
-    }
-  </style>
 </head>
-<body class="wip-page">
+<body>
   <div class="noise"></div>
   <div class="crosshair" aria-hidden="true"></div>
 
   <div class="page-shell">
-    <header class="site-header">
+    <header class="site-header site-header-v2">
       <div class="brand-row">
         <div class="brand-mark">
           <span class="brand-icon"></span>
@@ -56,22 +22,97 @@
         </div>
         <nav class="top-nav" aria-label="Navigazione principale">
           <a href="index.html#feed">Feed</a>
-          <a href="work-in-progress.html">Index</a>
+          <a href="work-in-progress.html" aria-current="page">Index</a>
         </nav>
         <div class="status-chip">
           <span class="live-dot"></span>
           <span>Online</span>
         </div>
       </div>
-
-      <main class="wip-main">
-        <h1 class="wip-title">
-          <span>Work</span>
-          <span>In</span>
-          <span>Progress</span>
-        </h1>
-      </main>
     </header>
+
+    <main class="index-main">
+      <section class="index-head">
+        <p class="section-label">Index dashboard</p>
+        <h1>Conflict Risk Indices</h1>
+        <p class="intro">
+          Indicatori sintetici multi-dimensione basati sul feed eventi. Ogni indice mostra livello, trend, driver e tracciabilita.
+        </p>
+      </section>
+
+      <section class="index-grid">
+        <article class="index-card" data-index-card="epi">
+          <p class="index-label">Escalation Pressure Index</p>
+          <strong class="index-value" data-field="value">--</strong>
+          <p class="index-trend" data-field="trend">Trend: --</p>
+          <p class="index-meta" data-field="drivers">Driver: --</p>
+          <p class="index-meta" data-field="updated">Update: --</p>
+          <a class="index-link" href="index.html#feed">Eventi rilevanti</a>
+        </article>
+
+        <article class="index-card" data-index-card="cri">
+          <p class="index-label">Civilian Risk Index</p>
+          <strong class="index-value" data-field="value">--</strong>
+          <p class="index-trend" data-field="trend">Trend: --</p>
+          <p class="index-meta" data-field="drivers">Driver: --</p>
+          <p class="index-meta" data-field="updated">Update: --</p>
+          <a class="index-link" href="index.html#feed">Eventi rilevanti</a>
+        </article>
+
+        <article class="index-card" data-index-card="mdi">
+          <p class="index-label">Maritime Disruption Index</p>
+          <strong class="index-value" data-field="value">--</strong>
+          <p class="index-trend" data-field="trend">Trend: --</p>
+          <p class="index-meta" data-field="drivers">Driver: --</p>
+          <p class="index-meta" data-field="updated">Update: --</p>
+          <a class="index-link" href="index.html#feed">Eventi rilevanti</a>
+        </article>
+
+        <article class="index-card" data-index-card="rsi">
+          <p class="index-label">Regional Spillover Index</p>
+          <strong class="index-value" data-field="value">--</strong>
+          <p class="index-trend" data-field="trend">Trend: --</p>
+          <p class="index-meta" data-field="drivers">Driver: --</p>
+          <p class="index-meta" data-field="updated">Update: --</p>
+          <a class="index-link" href="index.html#feed">Eventi rilevanti</a>
+        </article>
+
+        <article class="index-card" data-index-card="esi">
+          <p class="index-label">Energy Shock Index</p>
+          <strong class="index-value" data-field="value">--</strong>
+          <p class="index-trend" data-field="trend">Trend: --</p>
+          <p class="index-meta" data-field="drivers">Driver: --</p>
+          <p class="index-meta" data-field="updated">Update: --</p>
+          <a class="index-link" href="index.html#feed">Eventi rilevanti</a>
+        </article>
+
+        <article class="index-card" data-index-card="gpii">
+          <p class="index-label">Great Power Involvement Index</p>
+          <strong class="index-value" data-field="value">--</strong>
+          <p class="index-trend" data-field="trend">Trend: --</p>
+          <p class="index-meta" data-field="drivers">Driver: --</p>
+          <p class="index-meta" data-field="updated">Update: --</p>
+          <a class="index-link" href="index.html#feed">Eventi rilevanti</a>
+        </article>
+
+        <article class="index-card index-card-wide" data-index-card="ivi">
+          <p class="index-label">Information Volatility Index</p>
+          <strong class="index-value" data-field="value">--</strong>
+          <p class="index-trend" data-field="trend">Trend: --</p>
+          <p class="index-meta" data-field="drivers">Driver: --</p>
+          <p class="index-meta" data-field="updated">Update: --</p>
+          <a class="index-link" href="index.html#feed">Eventi rilevanti</a>
+        </article>
+
+        <article class="index-card index-methodology">
+          <p class="index-label">Mini metodologia</p>
+          <p class="index-meta">Scala componente 0-4, aggregazione pesata, output 0-100.</p>
+          <p class="index-meta">Ogni indice mostra livello + trend 7 giorni (stima euristica dal feed).</p>
+          <p class="index-meta">Uso operativo: leggere gli indici in parallelo, non come super-indice unico.</p>
+        </article>
+      </section>
+    </main>
   </div>
+  <script src="app-index.js"></script>
 </body>
 </html>
