@@ -162,6 +162,23 @@ def summarize(value: str) -> str:
     return f"{clean[:MAX_SUMMARY_LENGTH].rstrip()}..."
 
 
+def extract_original_url(raw_description: str, fallback_link: str) -> str:
+    if raw_description:
+        hrefs = re.findall(r'href=["\']([^"\']+)["\']', raw_description, flags=re.IGNORECASE)
+        for href in hrefs:
+            candidate = unescape(href).strip()
+            if not candidate:
+                continue
+            host = ""
+            try:
+                host = (urlparse(candidate).hostname or "").lower()
+            except Exception:
+                host = ""
+            if host and "news.google.com" not in host:
+                return candidate
+    return fallback_link
+
+
 def build_source_markers(source_name: str, link: str) -> set[str]:
     markers = {source_name.lower().strip()}
 
@@ -350,12 +367,14 @@ def parse_rss(xml_text: str, source_name: str) -> list[dict]:
 
     for item in root.findall(".//item"):
         raw_title = strip_html(item.findtext("title", default=""))
-        description = strip_html(item.findtext("description", default=""))
+        raw_description = item.findtext("description", default="") or ""
+        description = strip_html(raw_description)
         link = strip_html(item.findtext("link", default=""))
+        original_link = extract_original_url(raw_description, link)
         pub_date = item.findtext("pubDate", default="") or item.findtext("published", default="")
-        title = cleanup_title(raw_title, source_name, link)
+        title = cleanup_title(raw_title, source_name, original_link)
 
-        if not title or not link:
+        if not title or not original_link:
             continue
         if not item_matches_iran(title, description):
             continue
@@ -366,7 +385,7 @@ def parse_rss(xml_text: str, source_name: str) -> list[dict]:
                 "source": source_name,
                 "title": title,
                 "summary": summarize(description),
-                "url": link,
+                "url": original_link,
                 "time": iso_time,
                 "sort_time": sort_time,
             }
