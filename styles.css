@@ -167,6 +167,7 @@ body::after {
 }
 
 .brand-row {
+  position: relative;
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
@@ -212,6 +213,9 @@ body::after {
 }
 
 .top-nav {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
@@ -257,8 +261,8 @@ button {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #2dff74;
-  box-shadow: 0 0 14px rgba(45, 255, 116, 0.7);
+  background: #2dff74 !important;
+  box-shadow: 0 0 14px rgba(45, 255, 116, 0.78) !important;
 }
 
 .hero {
@@ -536,6 +540,8 @@ h2 {
   }
 
   .top-nav {
+    position: static;
+    transform: none;
     width: auto;
     display: flex;
     justify-content: start;
