@@ -1,0 +1,1083 @@
+{
+  "generated_at": "2026-04-10T20:21:36.131756+00:00",
+  "generated_at_local": "2026-04-10T22:21:33.809634+02:00",
+  "refresh_interval_minutes": 10,
+  "daily_close_time_local": "00:05",
+  "coverage_start_day": "2026-02-28",
+  "briefs": [
+    {
+      "day": "2026-04-07",
+      "label": "2026-04-07",
+      "story_count": 6,
+      "status": "latest_closed",
+      "status_note": "Ultimo dossier disponibile: non essendoci ancora notizie per oggi, questo resta il giorno più recente già chiuso.",
+      "finalization_note": "Questo blocco è già consolidato. Il prossimo brief si aprirà appena arriveranno notizie nel nuovo giorno operativo.",
+      "dominant_frame": "deterrence",
+      "dominant_theme_label": "deterrenza e segnalazione coercitiva",
+      "top_keywords": [
+        "trump",
+        "ultimatum",
+        "settimane",
+        "puo'",
+        "seguire",
+        "teatro",
+        "regionale",
+        "credibilita'",
+        "oppure",
+        "bombardamenti"
+      ],
+      "continuity_markers": [
+        "trump"
+      ],
+      "discontinuity_markers": [
+        "ultimatum",
+        "settimane",
+        "puo'",
+        "seguire"
+      ],
+      "actors_in_focus": [
+        "Stati Uniti",
+        "Iran",
+        "Cina",
+        "Europa"
+      ],
+      "themes_in_focus": [
+        "pressione militare",
+        "negoziato e tregua",
+        "ordine regionale"
+      ],
+      "manual_lens": "deterrenza e segnalazione coercitiva",
+      "key_stories": [
+        {
+          "time": "22:59",
+          "source": "Reuters",
+          "title": "Trump dice che è d'accordo a sospendere i bombardamenti sull'Iran per due settimane",
+          "summary": "Trump dice che è d'accordo a sospendere i bombardamenti sull'Iran per due settimane"
+        },
+        {
+          "time": "22:57",
+          "source": "Al Jazeera",
+          "title": "Trump sospende i bombardamenti sull'Iran per due settimane a seguito di terribili minacce",
+          "summary": "Trump sospende i bombardamenti sull’Iran per due settimane in seguito alle terribili minacce"
+        },
+        {
+          "time": "22:29",
+          "source": "Reuters",
+          "title": "Papa Leone definisce la minaccia di Trump contro l'Iran \"veramente inaccettabile\"",
+          "summary": "Papa Leone definisce 'veramente inaccettabile' la minaccia di Trump contro l'Iran"
+        }
+      ],
+      "analytical_summary": {
+        "overview": "Il cuore della giornata del 2026-04-07 sta nel modo in cui segnali coercitivi e margini negoziali vengono fatti convivere nello stesso ciclo di crisi. I temi che pesano di più sono pressione militare, negoziato e tregua e ordine regionale, mentre Stati Uniti, Iran e Cina restano gli attori che definiscono il livello di rischio percepito. I segnali più visibili ruotano attorno a ultimatum e settimane.",
+        "storyline": "Sul piano dei fatti, la giornata si apre con il fatto che trump dice che è d'accordo a sospendere i bombardamenti sull'Iran per due settimane, a cui si aggiunge che trump sospende i bombardamenti sull’Iran per due settimane in seguito alle terribili minacce, mentre papa Leone definisce 'veramente inaccettabile' la minaccia di Trump contro l'Iran.",
+        "source_angle": "Tra le fonti emerge una ripartizione abbastanza chiara: Reuters insiste soprattutto su trump dice che è d'accordo a sospendere i bombardamenti sull'iran per due settimane; Al Jazeera insiste soprattutto su trump sospende i bombardamenti sull'iran per due settimane a seguito di terribili minacce.",
+        "implication": "Il punto politico più delicato è che pressione militare e negoziato e tregua non vengono gestiti come fasi separate: pressione e pausa tattica si sovrappongono. Questo costringe Stati Uniti e Iran a misurare non solo la forza del segnale, ma anche il rischio di essere letti come incoerenti o poco credibili. Le fonti che pesano di più nella giornata sono Reuters e Al Jazeera, e questo aiuta a capire quale lato della crisi sta ricevendo maggiore attenzione.",
+        "strategic_reading": "La chiave interpretativa più utile è quella della deterrenza: minacce, posture e segnali di forza servono a spostare il calcolo dell'avversario, ma possono anche accelerare la spirale di insicurezza.",
+        "trajectory": "Rispetto al 2026-04-06, la continuità si vede soprattutto nella persistenza di pressione militare e negoziato e tregua; cambia però il modo in cui questi temi entrano nel ciclo di crisi.",
+        "watchpoint": "Conviene monitorare se il segnale resta dimostrativo o se apre una soglia nuova di ritorsione e contro-ritorsione."
+      },
+      "sources": [
+        "Reuters",
+        "Al Jazeera"
+      ],
+      "retrieved_context_titles": [
+        "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the"
+      ],
+      "retrieved_context": [
+        {
+          "chunk_id": "002-paper-chunk-002",
+          "title": "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the",
+          "text": "such risks. The study refines the security dilemma framework by positioning communication as a constitutive driver of insecurity rather than merely a reflection of material capabilities. It argues that interpretive transparency, institutionalised back - channels, and sustained dialogue are critical for transforming security communication from an in - strument of threat amplification into a means of conflict management. The findings contribute to theoretical debates on the communicative dimensions of security and offer insights for policymakers seeking durable de-escalation mechanisms. keywords Security Dilemma, Security Communication, Iran-Israel Conflict, 12-Day War, International Security."
+        },
+        {
+          "chunk_id": "002-paper-chunk-007",
+          "title": "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the",
+          "text": "Wheeler (2008) later advanced the discussion by identifying the psychological dimensions of the dilemma, particu- larly fear and identity. Collectively, these scholars underscore that insecurity is not only structural but also perceptual, driven by how states interpret one another’s signals. Security Communication and the Security Dilemma: Insights from the Iran-Israel Rivalry International Journal of Contemporary Security Studies • Vol. 2, No. 1 • 19 This theoretical lens provides a structural explanation of the Iran-Israel rivalry. Defensive actions such as Iran’s uranium enrichment or Israel’s pre-emptive military postures are interpreted by each side as offensive provocations. Consequent"
+        },
+        {
+          "chunk_id": "002-paper-chunk-012",
+          "title": "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the",
+          "text": "depending on interpretation. However, despite these advances, much of the literature re - mains focused on state elites, neglecting the roles of media, public discourse, and transnational communication that have become increasingly vital in the digital age. Security Communication in the Iran-Israel Rivalry Despite progress in integrating communication into security studies, limited research explicitly applies the concept of security communication to enduring Middle Eastern rivalries. Existing works have tended to prioritise material or strategic dimensions, such as Iran’s regional interventions or Israel’s deterrence strategies (Zafar, Akhtar, and Shaukat, 2025). Few have examined how verbal"
+        },
+        {
+          "chunk_id": "002-paper-chunk-018",
+          "title": "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the",
+          "text": "between President Kennedy and Premier Khrushchev allowed both sides to exchange concessions without public esca- lation. Khrushchev’s message to Kennedy, offering to withdraw Soviet missiles from Cuba in return for assurances and the later removal of U.S. missiles from Turkey , demonstrates how credible dia - logue and mutual recognition of interests averted catastrophe (Cawley, 2017; Kim & Martín, 2021; Radchenko & Zubok, 2023). The episode shows that when communication is transparent, reciprocal, and institutionally grounded, even existential tensions can be contained. In contrast, the Iran-Israel conflict, particularly during the Twelve-Day War of 2025, demonstrates how securitised rhetor"
+        }
+      ],
+      "commentator_prompt_package": {
+        "instruction": "Scrivi una sintesi giornaliera in italiano chiaro, analitico ma leggibile. Spiega cosa conta nella giornata, quale meccanismo strategico o geoeconomico aiuta a leggerla, che cosa cambia rispetto ai giorni precedenti e che cosa conviene monitorare dopo. Non citare il materiale di supporto e non usare formule meta-discorsive.",
+        "dominant_frame": "deterrence",
+        "keywords": [
+          "trump",
+          "ultimatum",
+          "settimane",
+          "puo'",
+          "seguire",
+          "teatro",
+          "regionale",
+          "credibilita'",
+          "oppure",
+          "bombardamenti"
+        ],
+        "continuity_markers": [
+          "trump"
+        ],
+        "discontinuity_markers": [
+          "ultimatum",
+          "settimane",
+          "puo'",
+          "seguire"
+        ],
+        "retrieved_context_titles": [
+          "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the"
+        ]
+      }
+    },
+    {
+      "day": "2026-04-06",
+      "label": "2026-04-06",
+      "story_count": 1,
+      "status": "final",
+      "status_note": "Brief chiuso: la giornata non si aggiorna più e resta come archivio stabile della sequenza.",
+      "finalization_note": "Giornata già consolidata dopo la chiusura notturna del ciclo di aggiornamento.",
+      "dominant_frame": "deterrence",
+      "dominant_theme_label": "deterrenza e segnalazione coercitiva",
+      "top_keywords": [
+        "hormuz",
+        "trump",
+        "impasse",
+        "stretto",
+        "intensifica",
+        "minacce",
+        "alle",
+        "infrastrutture",
+        "iraniane",
+        "escalates"
+      ],
+      "continuity_markers": [
+        "trump"
+      ],
+      "discontinuity_markers": [
+        "hormuz",
+        "impasse",
+        "stretto",
+        "intensifica"
+      ],
+      "actors_in_focus": [
+        "Stati Uniti",
+        "Iran"
+      ],
+      "themes_in_focus": [
+        "rotte e choke points",
+        "pressione militare",
+        "energia e sanzioni"
+      ],
+      "manual_lens": "deterrenza e segnalazione coercitiva",
+      "key_stories": [
+        {
+          "time": "15:04",
+          "source": "Council on Foreign Relations",
+          "title": "Trump intensifica le minacce alle infrastrutture iraniane nel mezzo dell’impasse dello Stretto di Hormuz",
+          "summary": "Trump intensifica le minacce alle infrastrutture iraniane nell’impasse dello Stretto di Hormuz"
+        }
+      ],
+      "analytical_summary": {
+        "overview": "Il cuore della giornata del 2026-04-06 sta nel modo in cui segnali coercitivi e margini negoziali vengono fatti convivere nello stesso ciclo di crisi. I temi che pesano di più sono rotte e choke points, pressione militare e energia e sanzioni, mentre Stati Uniti e Iran restano gli attori che definiscono il livello di rischio percepito. I segnali più visibili ruotano attorno a hormuz e impasse. Il numero ridotto di notizie rende ancora più leggibile il punto di pressione prevalente.",
+        "storyline": "Sul piano dei fatti, il punto più visibile della giornata è che trump intensifica le minacce alle infrastrutture iraniane nell’impasse dello Stretto di Hormuz. Questo episodio concentra quasi da solo il significato operativo della sequenza.",
+        "source_angle": "Tra le fonti emerge una ripartizione abbastanza chiara: Council on Foreign Relations insiste soprattutto su trump intensifica le minacce alle infrastrutture iraniane nel mezzo dell’impasse dello stretto di hormuz.",
+        "implication": "Il punto politico più delicato è che rotte e choke points e pressione militare non vengono gestiti come fasi separate: pressione e pausa tattica si sovrappongono. Questo costringe Stati Uniti e Iran a misurare non solo la forza del segnale, ma anche il rischio di essere letti come incoerenti o poco credibili. Le fonti che pesano di più nella giornata sono Council on Foreign Relations, e questo aiuta a capire quale lato della crisi sta ricevendo maggiore attenzione.",
+        "strategic_reading": "La chiave interpretativa più utile è quella della deterrenza: minacce, posture e segnali di forza servono a spostare il calcolo dell'avversario, ma possono anche accelerare la spirale di insicurezza.",
+        "trajectory": "Rispetto al 2026-04-03, la continuità si vede soprattutto nella persistenza di rotte e choke points e pressione militare; cambia però il modo in cui questi temi entrano nel ciclo di crisi.",
+        "watchpoint": "Conviene monitorare se il segnale resta dimostrativo o se apre una soglia nuova di ritorsione e contro-ritorsione."
+      },
+      "sources": [
+        "Council on Foreign Relations"
+      ],
+      "retrieved_context_titles": [
+        "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the",
+        "Beyond “Maximum Pressure” in US POLICY ON IRAN Leveraging Regional Partners to Contain Iran’s Actions and Shape its Future Choices MEI Strategic Initiative January 2025"
+      ],
+      "retrieved_context": [
+        {
+          "chunk_id": "002-paper-chunk-002",
+          "title": "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the",
+          "text": "such risks. The study refines the security dilemma framework by positioning communication as a constitutive driver of insecurity rather than merely a reflection of material capabilities. It argues that interpretive transparency, institutionalised back - channels, and sustained dialogue are critical for transforming security communication from an in - strument of threat amplification into a means of conflict management. The findings contribute to theoretical debates on the communicative dimensions of security and offer insights for policymakers seeking durable de-escalation mechanisms. keywords Security Dilemma, Security Communication, Iran-Israel Conflict, 12-Day War, International Security."
+        },
+        {
+          "chunk_id": "002-paper-chunk-012",
+          "title": "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the",
+          "text": "depending on interpretation. However, despite these advances, much of the literature re - mains focused on state elites, neglecting the roles of media, public discourse, and transnational communication that have become increasingly vital in the digital age. Security Communication in the Iran-Israel Rivalry Despite progress in integrating communication into security studies, limited research explicitly applies the concept of security communication to enduring Middle Eastern rivalries. Existing works have tended to prioritise material or strategic dimensions, such as Iran’s regional interventions or Israel’s deterrence strategies (Zafar, Akhtar, and Shaukat, 2025). Few have examined how verbal"
+        },
+        {
+          "chunk_id": "beyond-maximum-pressure-in-us-policy-on-iran-chunk-003",
+          "title": "Beyond “Maximum Pressure” in US POLICY ON IRAN Leveraging Regional Partners to Contain Iran’s Actions and Shape its Future Choices MEI Strategic Initiative January 2025",
+          "text": "to inform a holistic and resolute approach toward Iran. 2 4 Intr oduction and Strategic Context 7 A Shifting R egional Landscape Undermines Ir an’s Position, 2023-24 13 Ho w This Shifting Regional Landscape Impacts Ir an’s Axis of Resistance Partners 17 The S trategic Position of the Islamic R epublic of Iran Abroad and at Home 21 Thr ee Strategic Policy Recommendations f or a Second Trump Administrations’s Ir an Policy 25 T ext Box - US Policy on Iran: Past, Present, and F uture 29 About the Authors 29 Ackno wledgements & Disclaimer CONTENTS 3 Photo above: A portrait of Iran’s Supreme Leader Ayatollah Ali Khamenei in Azadi (Freedom) Square in Tehran. Photo by Morteza Nikoubazl/NurPhoto via"
+        },
+        {
+          "chunk_id": "002-paper-chunk-018",
+          "title": "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the",
+          "text": "between President Kennedy and Premier Khrushchev allowed both sides to exchange concessions without public esca- lation. Khrushchev’s message to Kennedy, offering to withdraw Soviet missiles from Cuba in return for assurances and the later removal of U.S. missiles from Turkey , demonstrates how credible dia - logue and mutual recognition of interests averted catastrophe (Cawley, 2017; Kim & Martín, 2021; Radchenko & Zubok, 2023). The episode shows that when communication is transparent, reciprocal, and institutionally grounded, even existential tensions can be contained. In contrast, the Iran-Israel conflict, particularly during the Twelve-Day War of 2025, demonstrates how securitised rhetor"
+        }
+      ],
+      "commentator_prompt_package": {
+        "instruction": "Scrivi una sintesi giornaliera in italiano chiaro, analitico ma leggibile. Spiega cosa conta nella giornata, quale meccanismo strategico o geoeconomico aiuta a leggerla, che cosa cambia rispetto ai giorni precedenti e che cosa conviene monitorare dopo. Non citare il materiale di supporto e non usare formule meta-discorsive.",
+        "dominant_frame": "deterrence",
+        "keywords": [
+          "hormuz",
+          "trump",
+          "impasse",
+          "stretto",
+          "intensifica",
+          "minacce",
+          "alle",
+          "infrastrutture",
+          "iraniane",
+          "escalates"
+        ],
+        "continuity_markers": [
+          "trump"
+        ],
+        "discontinuity_markers": [
+          "hormuz",
+          "impasse",
+          "stretto",
+          "intensifica"
+        ],
+        "retrieved_context_titles": [
+          "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the",
+          "Beyond “Maximum Pressure” in US POLICY ON IRAN Leveraging Regional Partners to Contain Iran’s Actions and Shape its Future Choices MEI Strategic Initiative January 2025"
+        ]
+      }
+    },
+    {
+      "day": "2026-04-03",
+      "label": "2026-04-03",
+      "story_count": 3,
+      "status": "final",
+      "status_note": "Brief chiuso: la giornata non si aggiorna più e resta come archivio stabile della sequenza.",
+      "finalization_note": "Giornata già consolidata dopo la chiusura notturna del ciclo di aggiornamento.",
+      "dominant_frame": "geoeconomics",
+      "dominant_theme_label": "leva geoeconomica e vulnerabilità strategiche",
+      "top_keywords": [
+        "trump",
+        "sanzioni",
+        "russia",
+        "costi",
+        "calcolo",
+        "seguire",
+        "piu'",
+        "prezzi",
+        "missione",
+        "compiuta"
+      ],
+      "continuity_markers": [],
+      "discontinuity_markers": [
+        "trump",
+        "sanzioni",
+        "russia",
+        "costi"
+      ],
+      "actors_in_focus": [
+        "Stati Uniti",
+        "Russia",
+        "Europa",
+        "Iran"
+      ],
+      "themes_in_focus": [
+        "energia e sanzioni",
+        "ordine regionale",
+        "rotte e choke points"
+      ],
+      "manual_lens": "leva geoeconomica e vulnerabilità strategiche",
+      "key_stories": [
+        {
+          "time": "17:48",
+          "source": "Council on Foreign Relations",
+          "title": "Missione compiuta? Fare il punto sulla guerra in Iran",
+          "summary": "Missione compiuta? Bilancio della guerra in Iran"
+        },
+        {
+          "time": "15:26",
+          "source": "Council on Foreign Relations",
+          "title": "Trump ha giocato d'azzardo allentando le sanzioni petrolifere su Iran e Russia. RipagherÃ ? -",
+          "summary": "Trump ha giocato d’azzardo allentando le sanzioni petrolifere su Iran e Russia. Ripagherà?"
+        },
+        {
+          "time": "02:30",
+          "source": "CSIS",
+          "title": "Come la guerra in Iran e il prezzo del petrolio incidono sui calcoli del Cremlino",
+          "summary": "Come la guerra in Iran e il prezzo del petrolio influiscono sul calcolo del Cremlino"
+        }
+      ],
+      "analytical_summary": {
+        "overview": "La giornata del 2026-04-03 segnala uno slittamento dal solo piano militare a quello dei costi strategici. Il baricentro passa per energia e sanzioni, ordine regionale e rotte e choke points, con Stati Uniti, Russia e Europa al centro delle decisioni che redistribuiscono oneri, vulnerabilità e leve di pressione. I segnali più visibili ruotano attorno a trump e sanzioni.",
+        "storyline": "Sul piano dei fatti, la giornata si apre con il fatto che missione compiuta? Bilancio della guerra in Iran, a cui si aggiunge che trump ha giocato d’azzardo allentando le sanzioni petrolifere su Iran e Russia, mentre come la guerra in Iran e il prezzo del petrolio influiscono sul calcolo del Cremlino.",
+        "source_angle": "Tra le fonti emerge una ripartizione abbastanza chiara: Council on Foreign Relations insiste soprattutto su missione compiuta? fare il punto sulla guerra in iran; CSIS insiste soprattutto su come la guerra in iran e il prezzo del petrolio incidono sui calcoli del cremlino.",
+        "implication": "La giornata chiarisce che energia e sanzioni e ordine regionale stanno entrando nel conflitto come leve strategiche vere e proprie. Per Stati Uniti e Russia il problema non è soltanto reagire all'evento, ma assorbire costi e vulnerabilità che possono accumularsi anche senza una nuova offensiva. Le fonti che pesano di più nella giornata sono Council on Foreign Relations e CSIS, e questo aiuta a capire quale lato della crisi sta ricevendo maggiore attenzione.",
+        "strategic_reading": "La lettura più convincente è geoeconomica: energia, sanzioni, rotte e prezzi non restano sullo sfondo, ma diventano strumenti di pressione che redistribuiscono costi e margini di manovra.",
+        "trajectory": "Rispetto al 2026-04-02, il baricentro della giornata si sposta verso trump e sanzioni, segnalando una variazione nel ritmo o nella scala della pressione.",
+        "watchpoint": "Conviene monitorare prezzi, rotte, premi assicurativi, sanzioni e aggiustamenti dei partner più esposti ai costi della crisi."
+      },
+      "sources": [
+        "Council on Foreign Relations",
+        "CSIS"
+      ],
+      "retrieved_context_titles": [
+        "Edited by Omprakash Mishra · Souradeep Sen The World in Permacrisis Global Political Economy, Geopolitics and International Security",
+        "Beyond “Maximum Pressure” in US POLICY ON IRAN Leveraging Regional Partners to Contain Iran’s Actions and Shape its Future Choices MEI Strategic Initiative January 2025"
+      ],
+      "retrieved_context": [
+        {
+          "chunk_id": "global-political-economy-geopolitics-and-international-omprakash-mishra-editor-s-chunk-354",
+          "title": "Edited by Omprakash Mishra · Souradeep Sen The World in Permacrisis Global Political Economy, Geopolitics and International Security",
+          "text": "2019). Iran’s signiﬁcance to the international market, for instance, has as much to do with its undeniable clout of control over the Strait of Hormuz through which a substantial part of international trade passes, as it does to the natural resource wealth Tehran sits on. It is a leverage that Iran holds and values, and one that every country that has its energy supplies passing through the Hormuz chokepoint remains vulnerable to. Whether Russia has been able to achieve the goals it set out to achieve through the use of energy as a weapon in the case of the Ukraine inva- sion would beneﬁt from an ex-post analysis. On the face of it, though, the Russians, it would appear, have exhausted the mo"
+        },
+        {
+          "chunk_id": "global-political-economy-geopolitics-and-international-omprakash-mishra-editor-s-chunk-353",
+          "title": "Edited by Omprakash Mishra · Souradeep Sen The World in Permacrisis Global Political Economy, Geopolitics and International Security",
+          "text": "war, Russia systematically destroyed nearly 50% of Ukraine’s installed power capacity and decimated its oil reﬁning industry, in addition to effectively uprooting the country’s laid energy infrastruc- ture in the form of transmission lines and distribution networks (Task Force May 2023). The attacks on Ukraine’s energy infrastructure came in just as evidence of Russian involvement in the outages of the Caspian Pipeline Consortium began to show. This targeting of energy infrastruc- ture, is part of a long dubious practice among state and non-state actors to disrupt and gain strategic advantage at the cost of a country’s energy systems, and by that token, its national security. In attacking Eu"
+        },
+        {
+          "chunk_id": "global-political-economy-geopolitics-and-international-omprakash-mishra-editor-s-chunk-380",
+          "title": "Edited by Omprakash Mishra · Souradeep Sen The World in Permacrisis Global Political Economy, Geopolitics and International Security",
+          "text": "November 10. Bloomberg News. https://www.bloomberg.com/news/articles/2021- 11-10/how-europe-has-become-so-dependent-on-putin-for-gas-quicktake. Global Energy Demand to Plunge This Year as a Result of the Biggest Shock Since the Second World War. 2020, April 30. IEA. https://www.iea.org/ news/global-energy-demand-to-plunge-this-year-as-a-result-of-the-biggest- shock-since-the-second-world-war. Hammelehle, J. 2023. Energy security: Refueled. https://securityconference.org/ publikationen/munich-security-report-2023/energy-security/. Keohane, R. 1990. International liberalism reconsidered. In The economic limits to modern politics, ed. J. Dunn, 165–194. Cambridge University Press. Keohane, R.O.,"
+        },
+        {
+          "chunk_id": "beyond-maximum-pressure-in-us-policy-on-iran-chunk-023",
+          "title": "Beyond “Maximum Pressure” in US POLICY ON IRAN Leveraging Regional Partners to Contain Iran’s Actions and Shape its Future Choices MEI Strategic Initiative January 2025",
+          "text": "Iran-China strategic agreement,” Middle East Institute, April 26, 2024, https:/ /www. mei.edu/publications/making-sense-iran-china-strategic- agreement. 28. Giorgio Cafiero, “A year ago, Beijing brokered an Iran-Saudi deal. How does détente look today? ,” Atlantic Council, March 6, 2024, https:/ /www.atlanticcouncil.org/blogs/iransource/iran- saudi-arabia-china-deal-one-year/. mutual inability to forestall the sudden collapse of the Assad regime in early December 2024 may prove to be a major turning point in their bilateral relationship going forward. But it is important to note that, until now, the two countries had also increased their military cooperation on several fronts unrelated to Sy"
+        }
+      ],
+      "commentator_prompt_package": {
+        "instruction": "Scrivi una sintesi giornaliera in italiano chiaro, analitico ma leggibile. Spiega cosa conta nella giornata, quale meccanismo strategico o geoeconomico aiuta a leggerla, che cosa cambia rispetto ai giorni precedenti e che cosa conviene monitorare dopo. Non citare il materiale di supporto e non usare formule meta-discorsive.",
+        "dominant_frame": "geoeconomics",
+        "keywords": [
+          "trump",
+          "sanzioni",
+          "russia",
+          "costi",
+          "calcolo",
+          "seguire",
+          "piu'",
+          "prezzi",
+          "missione",
+          "compiuta"
+        ],
+        "continuity_markers": [],
+        "discontinuity_markers": [
+          "trump",
+          "sanzioni",
+          "russia",
+          "costi"
+        ],
+        "retrieved_context_titles": [
+          "Edited by Omprakash Mishra · Souradeep Sen The World in Permacrisis Global Political Economy, Geopolitics and International Security",
+          "Beyond “Maximum Pressure” in US POLICY ON IRAN Leveraging Regional Partners to Contain Iran’s Actions and Shape its Future Choices MEI Strategic Initiative January 2025"
+        ]
+      }
+    },
+    {
+      "day": "2026-04-02",
+      "label": "2026-04-02",
+      "story_count": 3,
+      "status": "final",
+      "status_note": "Brief chiuso: la giornata non si aggiorna più e resta come archivio stabile della sequenza.",
+      "finalization_note": "Giornata già consolidata dopo la chiusura notturna del ciclo di aggiornamento.",
+      "dominant_frame": "deterrence",
+      "dominant_theme_label": "deterrenza e segnalazione coercitiva",
+      "top_keywords": [
+        "international",
+        "studi",
+        "strategici",
+        "corea",
+        "centro",
+        "internazionali",
+        "punto",
+        "fondo",
+        "notizia",
+        "crisi"
+      ],
+      "continuity_markers": [
+        "studi"
+      ],
+      "discontinuity_markers": [
+        "international",
+        "strategici",
+        "corea",
+        "centro"
+      ],
+      "actors_in_focus": [
+        "Iran",
+        "Europa"
+      ],
+      "themes_in_focus": [
+        "ordine regionale",
+        "rotte e choke points"
+      ],
+      "manual_lens": "deterrenza e segnalazione coercitiva",
+      "key_stories": [
+        {
+          "time": "20:35",
+          "source": "CSIS",
+          "title": "L'impatto del conflitto iraniano sulla Corea del Sud: i numeri",
+          "summary": "L'impatto del conflitto iraniano sulla Corea del Sud: i numeri"
+        },
+        {
+          "time": "18:56",
+          "source": "CSIS",
+          "title": "Chi sta vincendo la guerra in Iran? -CSI",
+          "summary": "Chi sta vincendo la guerra in Iran? CSI | Centro di Studi Strategici e Internazionali"
+        },
+        {
+          "time": "08:20",
+          "source": "IISS",
+          "title": "La proliferazione della tecnologia militare basata sull'intelligenza artificiale in Medio Oriente",
+          "summary": "La proliferazione della tecnologia militare basata sull’intelligenza artificiale in Medio Oriente"
+        }
+      ],
+      "analytical_summary": {
+        "overview": "Il cuore della giornata del 2026-04-02 sta nel modo in cui segnali coercitivi e margini negoziali vengono fatti convivere nello stesso ciclo di crisi. I temi che pesano di più sono ordine regionale e rotte e choke points, mentre Iran e Europa restano gli attori che definiscono il livello di rischio percepito. I segnali più visibili ruotano attorno a international e strategici.",
+        "storyline": "Sul piano dei fatti, la giornata si apre con il fatto che l'impatto del conflitto iraniano sulla Corea del Sud: i numeri, a cui si aggiunge che chi sta vincendo la guerra in Iran? -CSI, mentre la proliferazione della tecnologia militare basata sull’intelligenza artificiale in Medio Oriente.",
+        "source_angle": "Tra le fonti emerge una ripartizione abbastanza chiara: CSIS insiste soprattutto su l'impatto del conflitto iraniano sulla corea del sud: i numeri; IISS insiste soprattutto su la proliferazione della tecnologia militare basata sull'intelligenza artificiale in medio oriente.",
+        "implication": "Il punto politico più delicato è che ordine regionale e rotte e choke points non vengono gestiti come fasi separate: pressione e pausa tattica si sovrappongono. Questo costringe Iran e Europa a misurare non solo la forza del segnale, ma anche il rischio di essere letti come incoerenti o poco credibili. Le fonti che pesano di più nella giornata sono CSIS e IISS, e questo aiuta a capire quale lato della crisi sta ricevendo maggiore attenzione.",
+        "strategic_reading": "La chiave interpretativa più utile è quella della deterrenza: minacce, posture e segnali di forza servono a spostare il calcolo dell'avversario, ma possono anche accelerare la spirale di insicurezza.",
+        "trajectory": "Rispetto al 2026-04-01, la continuità si vede soprattutto nella persistenza di ordine regionale e rotte e choke points; cambia però il modo in cui questi temi entrano nel ciclo di crisi.",
+        "watchpoint": "Conviene monitorare se il segnale resta dimostrativo o se apre una soglia nuova di ritorsione e contro-ritorsione."
+      },
+      "sources": [
+        "CSIS",
+        "IISS"
+      ],
+      "retrieved_context_titles": [
+        "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the"
+      ],
+      "retrieved_context": [
+        {
+          "chunk_id": "002-paper-chunk-002",
+          "title": "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the",
+          "text": "such risks. The study refines the security dilemma framework by positioning communication as a constitutive driver of insecurity rather than merely a reflection of material capabilities. It argues that interpretive transparency, institutionalised back - channels, and sustained dialogue are critical for transforming security communication from an in - strument of threat amplification into a means of conflict management. The findings contribute to theoretical debates on the communicative dimensions of security and offer insights for policymakers seeking durable de-escalation mechanisms. keywords Security Dilemma, Security Communication, Iran-Israel Conflict, 12-Day War, International Security."
+        },
+        {
+          "chunk_id": "002-paper-chunk-007",
+          "title": "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the",
+          "text": "Wheeler (2008) later advanced the discussion by identifying the psychological dimensions of the dilemma, particu- larly fear and identity. Collectively, these scholars underscore that insecurity is not only structural but also perceptual, driven by how states interpret one another’s signals. Security Communication and the Security Dilemma: Insights from the Iran-Israel Rivalry International Journal of Contemporary Security Studies • Vol. 2, No. 1 • 19 This theoretical lens provides a structural explanation of the Iran-Israel rivalry. Defensive actions such as Iran’s uranium enrichment or Israel’s pre-emptive military postures are interpreted by each side as offensive provocations. Consequent"
+        },
+        {
+          "chunk_id": "002-paper-chunk-001",
+          "title": "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the",
+          "text": "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the Security Dilemma: Insights from the Iran-Israel Rivalry Abdul Rashid Gbambu¹,* Mohammed Gadafi Ibrahim² 1 Department of Communication, Faculty of Arts and Humanities, Islamic University College, Accra, Ghana; argbambu@iug.edu.gh. 2 Department of Political Science, Faculty of Social Science, University for Development Studies, Tamale, Ghana; mgadafi@uds.edu.gh. * Correspondence: argbambu@iuc.edu.gh Received: 24 August 2025; Revised: 18 December 2025; Accepted: 5 January 2026; Published: 1 February 2026. abstract Thi"
+        },
+        {
+          "chunk_id": "002-paper-chunk-005",
+          "title": "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the",
+          "text": "instruments that gen- erate insecurity and deepen antagonism. Comparatively, the misinterpretation of signals in the Iran and Israel rivalry echoes other his - torical confrontations such as the Cuban Missile Crisis (Scott & Hughes, 2015), the Cold War arms race, the 1999 Kargil conflict (Gill, 2021), and the ongoing Russia-Ukraine war. In each instance, communicative misjudgments created opportunities for miscalculation and escalation. Against this background, this study hypothesises that miscommunication and rhetorical escalation are central mechanisms intensifying the security dilemma in the Iran and Israel rivalry. Accordingly, the study asks how security communication, intended as reass"
+        }
+      ],
+      "commentator_prompt_package": {
+        "instruction": "Scrivi una sintesi giornaliera in italiano chiaro, analitico ma leggibile. Spiega cosa conta nella giornata, quale meccanismo strategico o geoeconomico aiuta a leggerla, che cosa cambia rispetto ai giorni precedenti e che cosa conviene monitorare dopo. Non citare il materiale di supporto e non usare formule meta-discorsive.",
+        "dominant_frame": "deterrence",
+        "keywords": [
+          "international",
+          "studi",
+          "strategici",
+          "corea",
+          "centro",
+          "internazionali",
+          "punto",
+          "fondo",
+          "notizia",
+          "crisi"
+        ],
+        "continuity_markers": [
+          "studi"
+        ],
+        "discontinuity_markers": [
+          "international",
+          "strategici",
+          "corea",
+          "centro"
+        ],
+        "retrieved_context_titles": [
+          "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the"
+        ]
+      }
+    },
+    {
+      "day": "2026-04-01",
+      "label": "2026-04-01",
+      "story_count": 2,
+      "status": "final",
+      "status_note": "Brief chiuso: la giornata non si aggiorna più e resta come archivio stabile della sequenza.",
+      "finalization_note": "Giornata già consolidata dopo la chiusura notturna del ciclo di aggiornamento.",
+      "dominant_frame": "deterrence",
+      "dominant_theme_label": "deterrenza e segnalazione coercitiva",
+      "top_keywords": [
+        "sharaa",
+        "titolo",
+        "responsabile",
+        "relazioni",
+        "esterne",
+        "medio",
+        "oriente",
+        "istituto",
+        "internazionale",
+        "studi"
+      ],
+      "continuity_markers": [],
+      "discontinuity_markers": [
+        "sharaa",
+        "titolo",
+        "responsabile",
+        "relazioni"
+      ],
+      "actors_in_focus": [
+        "Europa",
+        "Stati Uniti",
+        "Iran"
+      ],
+      "themes_in_focus": [
+        "ordine regionale"
+      ],
+      "manual_lens": "deterrenza e segnalazione coercitiva",
+      "key_stories": [
+        {
+          "time": "17:38",
+          "source": "IISS",
+          "title": "Responsabile Relazioni Esterne, IISS-Medio Oriente - Istituto Internazionale per gli Studi Strategici",
+          "summary": "Responsabile Relazioni Esterne, IISS-Medio Oriente Istituto Internazionale per gli Studi Strategici"
+        },
+        {
+          "time": "13:23",
+          "source": "Chatham House",
+          "title": "Il presidente siriano al-Sharaa sulla guerra con l'Iran: \"La Siria rimarrÃ fuori da questo conflitto\"",
+          "summary": "Il presidente siriano al-Sharaa sulla guerra con l'Iran: \"La Siria rimarrà fuori da questo conflitto\" Chatham House"
+        }
+      ],
+      "analytical_summary": {
+        "overview": "Il cuore della giornata del 2026-04-01 sta nel modo in cui segnali coercitivi e margini negoziali vengono fatti convivere nello stesso ciclo di crisi. I temi che pesano di più sono ordine regionale, mentre Europa, Stati Uniti e Iran restano gli attori che definiscono il livello di rischio percepito. I segnali più visibili ruotano attorno a sharaa e titolo.",
+        "storyline": "Sul piano dei fatti, la giornata si apre con il fatto che responsabile Relazioni Esterne, IISS-Medio Oriente Istituto Internazionale per gli Studi Strategici, a cui si aggiunge che il presidente siriano al-Sharaa sulla guerra con l'Iran: \"La Siria rimarrà fuori da questo conflitto\" Chatham House.",
+        "source_angle": "Tra le fonti emerge una ripartizione abbastanza chiara: IISS insiste soprattutto su responsabile relazioni esterne, iiss-medio oriente - istituto internazionale per gli studi strategici; Chatham House insiste soprattutto su il presidente siriano al-sharaa sulla guerra con l'iran: \"la siria rimarrã fuori da questo conflitto\".",
+        "implication": "Il punto politico più delicato è che ordine regionale non vengono gestiti come fasi separate: pressione e pausa tattica si sovrappongono. Questo costringe Europa e Stati Uniti a misurare non solo la forza del segnale, ma anche il rischio di essere letti come incoerenti o poco credibili. Le fonti che pesano di più nella giornata sono IISS e Chatham House, e questo aiuta a capire quale lato della crisi sta ricevendo maggiore attenzione.",
+        "strategic_reading": "La chiave interpretativa più utile è quella della deterrenza: minacce, posture e segnali di forza servono a spostare il calcolo dell'avversario, ma possono anche accelerare la spirale di insicurezza.",
+        "trajectory": "Rispetto al 2026-03-31, il baricentro della giornata si sposta verso sharaa e titolo, segnalando una variazione nel ritmo o nella scala della pressione.",
+        "watchpoint": "Conviene monitorare se il segnale resta dimostrativo o se apre una soglia nuova di ritorsione e contro-ritorsione."
+      },
+      "sources": [
+        "IISS",
+        "Chatham House"
+      ],
+      "retrieved_context_titles": [
+        "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the"
+      ],
+      "retrieved_context": [
+        {
+          "chunk_id": "002-paper-chunk-002",
+          "title": "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the",
+          "text": "such risks. The study refines the security dilemma framework by positioning communication as a constitutive driver of insecurity rather than merely a reflection of material capabilities. It argues that interpretive transparency, institutionalised back - channels, and sustained dialogue are critical for transforming security communication from an in - strument of threat amplification into a means of conflict management. The findings contribute to theoretical debates on the communicative dimensions of security and offer insights for policymakers seeking durable de-escalation mechanisms. keywords Security Dilemma, Security Communication, Iran-Israel Conflict, 12-Day War, International Security."
+        },
+        {
+          "chunk_id": "002-paper-chunk-007",
+          "title": "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the",
+          "text": "Wheeler (2008) later advanced the discussion by identifying the psychological dimensions of the dilemma, particu- larly fear and identity. Collectively, these scholars underscore that insecurity is not only structural but also perceptual, driven by how states interpret one another’s signals. Security Communication and the Security Dilemma: Insights from the Iran-Israel Rivalry International Journal of Contemporary Security Studies • Vol. 2, No. 1 • 19 This theoretical lens provides a structural explanation of the Iran-Israel rivalry. Defensive actions such as Iran’s uranium enrichment or Israel’s pre-emptive military postures are interpreted by each side as offensive provocations. Consequent"
+        },
+        {
+          "chunk_id": "002-paper-chunk-012",
+          "title": "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the",
+          "text": "depending on interpretation. However, despite these advances, much of the literature re - mains focused on state elites, neglecting the roles of media, public discourse, and transnational communication that have become increasingly vital in the digital age. Security Communication in the Iran-Israel Rivalry Despite progress in integrating communication into security studies, limited research explicitly applies the concept of security communication to enduring Middle Eastern rivalries. Existing works have tended to prioritise material or strategic dimensions, such as Iran’s regional interventions or Israel’s deterrence strategies (Zafar, Akhtar, and Shaukat, 2025). Few have examined how verbal"
+        },
+        {
+          "chunk_id": "002-paper-chunk-023",
+          "title": "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the",
+          "text": "(1950) foundational insight that the se- curity dilemma emerges when defensive measures are misinterpreted as offensive, and with Jervis’s (1978) view that perception and interpretation, more than material capability, often drive escalation. The communicative dimension of the Iran-Israel rivalry further demonstrates that misperception is not a by-product of conflict but a structural outcome of how states speak, signal, and perform their insecurities. Booth and Wheeler’s (2008) notion of “security dilemma sensibility” is instructive here, as it calls for empathy and interpretive caution in state communication. However, such sensibility remains absent in the Iran-Israel context, where interact"
+        }
+      ],
+      "commentator_prompt_package": {
+        "instruction": "Scrivi una sintesi giornaliera in italiano chiaro, analitico ma leggibile. Spiega cosa conta nella giornata, quale meccanismo strategico o geoeconomico aiuta a leggerla, che cosa cambia rispetto ai giorni precedenti e che cosa conviene monitorare dopo. Non citare il materiale di supporto e non usare formule meta-discorsive.",
+        "dominant_frame": "deterrence",
+        "keywords": [
+          "sharaa",
+          "titolo",
+          "responsabile",
+          "relazioni",
+          "esterne",
+          "medio",
+          "oriente",
+          "istituto",
+          "internazionale",
+          "studi"
+        ],
+        "continuity_markers": [],
+        "discontinuity_markers": [
+          "sharaa",
+          "titolo",
+          "responsabile",
+          "relazioni"
+        ],
+        "retrieved_context_titles": [
+          "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the"
+        ]
+      }
+    },
+    {
+      "day": "2026-03-31",
+      "label": "2026-03-31",
+      "story_count": 3,
+      "status": "final",
+      "status_note": "Brief chiuso: la giornata non si aggiorna più e resta come archivio stabile della sequenza.",
+      "finalization_note": "Giornata già consolidata dopo la chiusura notturna del ciclo di aggiornamento.",
+      "dominant_frame": "order",
+      "dominant_theme_label": "ordine regionale e riallineamento degli attori",
+      "top_keywords": [
+        "afghanistan",
+        "pakistan",
+        "l'institut",
+        "français",
+        "internationales",
+        "margini",
+        "regionale",
+        "tempi",
+        "trascurata",
+        "conflitto"
+      ],
+      "continuity_markers": [],
+      "discontinuity_markers": [
+        "afghanistan",
+        "pakistan",
+        "l'institut",
+        "français"
+      ],
+      "actors_in_focus": [
+        "Iran",
+        "Europa"
+      ],
+      "themes_in_focus": [
+        "ordine regionale",
+        "rotte e choke points"
+      ],
+      "manual_lens": "ordine regionale e riallineamento degli attori",
+      "key_stories": [
+        {
+          "time": "19:54",
+          "source": "Ifri",
+          "title": "Afghanistan-Pakistan: la guerra trascurata ai margini del conflitto in Medio Oriente",
+          "summary": "Afghanistan-Pakistan: la guerra trascurata ai margini del conflitto mediorientale l'Institut français des Relations Internationales (IFRI)"
+        },
+        {
+          "time": "12:00",
+          "source": "Ifri",
+          "title": "Il Giappone cerca il sostegno francese mentre Macron inizia il viaggio in Asia all’ombra della guerra con l’Iran",
+          "summary": "Il Giappone cerca il sostegno francese mentre Macron inizia il viaggio in Asia all’ombra della guerra in Iran Istituto francese per le relazioni internazionali (IFRI)"
+        },
+        {
+          "time": "12:00",
+          "source": "Ifri",
+          "title": "Afghanistan-Pakistan: la guerra trascurata ai margini del conflitto in Medio Oriente",
+          "summary": "Afghanistan-Pakistan: la guerra trascurata ai margini del conflitto in Medio Oriente l'Institut français des Relations Internationales (IFRI)"
+        }
+      ],
+      "analytical_summary": {
+        "overview": "La giornata del 2026-03-31 vale soprattutto per il suo effetto di riallineamento. I temi più presenti sono ordine regionale e rotte e choke points, e Iran e Europa mostrano come la crisi stia ridisegnando il quadro regionale oltre il singolo episodio. I segnali più visibili ruotano attorno a afghanistan e pakistan.",
+        "storyline": "Sul piano dei fatti, la giornata si apre con il fatto che afghanistan-Pakistan: la guerra trascurata ai margini del conflitto mediorientale l'Institut français des Relations Internationales (IFRI), a cui si aggiunge che il Giappone cerca il sostegno francese mentre Macron inizia il viaggio in Asia all’ombra della guerra in Iran Istituto francese per le relazioni internazionali (IFRI), mentre afghanistan-Pakistan: la guerra trascurata ai margini del conflitto in Medio Oriente l'Institut français des Relations Internationales (IFRI).",
+        "source_angle": "Tra le fonti emerge una ripartizione abbastanza chiara: Ifri insiste soprattutto su afghanistan-pakistan: la guerra trascurata ai margini del conflitto in medio oriente.",
+        "implication": "La posta in gioco non riguarda solo l'episodio del giorno, ma il modo in cui la crisi rialloca posizioni e margini di mediazione. Per Iran e Europa questo significa decidere se restare sul piano dichiarativo oppure trasformare il posizionamento politico in iniziativa concreta. Le fonti che pesano di più nella giornata sono Ifri, e questo aiuta a capire quale lato della crisi sta ricevendo maggiore attenzione.",
+        "strategic_reading": "Qui pesa soprattutto la dimensione di ordine regionale: alleati, mediatori e potenze esterne ricalibrano coperture politiche, ambiguità strategiche e forme di allineamento.",
+        "trajectory": "Rispetto al 2026-03-30, il baricentro della giornata si sposta verso afghanistan e pakistan, segnalando una variazione nel ritmo o nella scala della pressione.",
+        "watchpoint": "Conviene monitorare se gli attori regionali restano nelle dichiarazioni o spostano davvero risorse, coperture politiche e iniziative di mediazione."
+      },
+      "sources": [
+        "Ifri"
+      ],
+      "retrieved_context_titles": [
+        "Clandestine Axis of Middle East Hegemony: Iran, Israel, and the US. www.habtoorresearch.com",
+        "Edited by Omprakash Mishra · Souradeep Sen The World in Permacrisis Global Political Economy, Geopolitics and International Security",
+        "Beyond “Maximum Pressure” in US POLICY ON IRAN Leveraging Regional Partners to Contain Iran’s Actions and Shape its Future Choices MEI Strategic Initiative January 2025"
+      ],
+      "retrieved_context": [
+        {
+          "chunk_id": "iran-us-and-israel-en-chunk-007",
+          "title": "Clandestine Axis of Middle East Hegemony: Iran, Israel, and the US. www.habtoorresearch.com",
+          "text": "to Egypt and Morocco alone in December 2024. The underlying argument of this paper is that beyond the apparent hostilities and rivalries in the region, there exists a covert strategic alliance between Iran, Israel, and the United States. This cooperation manifests in various ways, including indirect coordination in conflict zones, intelligence-sharing, and economic transactions that defy public rhetoric. Despite Iran’s portrayal as a staunch adversary of both the US and Israel, instances of tacit collaboration—such as Iranian oil exports finding their way to markets through indirect channels, US tolerance of Iranian-backed militias in specific contexts, and shared interests in counterbalanci"
+        },
+        {
+          "chunk_id": "iran-us-and-israel-en-chunk-020",
+          "title": "Clandestine Axis of Middle East Hegemony: Iran, Israel, and the US. www.habtoorresearch.com",
+          "text": "in 1954 that included BP , Gulf Oil, Royal Dutch Shell, Total S.A., and Aramco’s American partners. However, as Iran’s economic and military power grew, so did the Shah’s ambitions and authoritarian tendencies. Known for his extravagance, he remained a valuable ally to the US as long as he aligned with its broader strategic goals. His expansionist policies, however, demonstrated his growing regional assertiveness—most notably, his seizure of the UAE-owned islands of Abu Musa, Greater Tunb, and Lesser Tunb in 1971. Neither the US nor the UK intervened, prioritizing their relationship with a powerful, oil-rich Iran over their ties with the small Gulf states, which at the time held little geopo"
+        },
+        {
+          "chunk_id": "global-political-economy-geopolitics-and-international-omprakash-mishra-editor-s-chunk-551",
+          "title": "Edited by Omprakash Mishra · Souradeep Sen The World in Permacrisis Global Political Economy, Geopolitics and International Security",
+          "text": "nent of regional powers’ geo-strategy and identiﬁes China as one of those regional powers (others being Brazil, Germany, India, Japan, Russia, and South Africa). He further identiﬁes four manifestations of these geoe- conomic strategies—neo-imperialism, neo-mercantilism, hegemony, and liberal institutionalism (Wigell 2016: 135–151). Herein many may differ about China’s regional status, but it is better to think of China as a rising regional power with geoeconomic strategies that impact its regional neighbourhood and then beyond. China is an aspiring global power but not a global one. In terms of its military prowess, it is still behind the United States. However, it is in the economic domain"
+        },
+        {
+          "chunk_id": "beyond-maximum-pressure-in-us-policy-on-iran-chunk-005",
+          "title": "Beyond “Maximum Pressure” in US POLICY ON IRAN Leveraging Regional Partners to Contain Iran’s Actions and Shape its Future Choices MEI Strategic Initiative January 2025",
+          "text": "with multiple defense, diplomatic, and economic policy tools and an extensive network of relationships to shape dynamics, including on responding to Iran’s role in the region. Iran remains the overriding strategic challenge and threat to US national security interests in the Middle East. 5 In 4. Farnaz Fassihi and Ronen Bergman, “Iran Begins to Evacuate Military Officials and Personnel From Syria,” The New York Times, December 6, 2024, https:/ /www.nytimes.com/2024/12/06/world/ middleeast/iran-syria-evacuation.html. 5. “Annual Threat Assessment of the U.S. Intelligence Introduction and Strategic Context The Islamic Republic of Iran is currently in its weakest and most isolated position since"
+        }
+      ],
+      "commentator_prompt_package": {
+        "instruction": "Scrivi una sintesi giornaliera in italiano chiaro, analitico ma leggibile. Spiega cosa conta nella giornata, quale meccanismo strategico o geoeconomico aiuta a leggerla, che cosa cambia rispetto ai giorni precedenti e che cosa conviene monitorare dopo. Non citare il materiale di supporto e non usare formule meta-discorsive.",
+        "dominant_frame": "order",
+        "keywords": [
+          "afghanistan",
+          "pakistan",
+          "l'institut",
+          "français",
+          "internationales",
+          "margini",
+          "regionale",
+          "tempi",
+          "trascurata",
+          "conflitto"
+        ],
+        "continuity_markers": [],
+        "discontinuity_markers": [
+          "afghanistan",
+          "pakistan",
+          "l'institut",
+          "français"
+        ],
+        "retrieved_context_titles": [
+          "Clandestine Axis of Middle East Hegemony: Iran, Israel, and the US. www.habtoorresearch.com",
+          "Edited by Omprakash Mishra · Souradeep Sen The World in Permacrisis Global Political Economy, Geopolitics and International Security",
+          "Beyond “Maximum Pressure” in US POLICY ON IRAN Leveraging Regional Partners to Contain Iran’s Actions and Shape its Future Choices MEI Strategic Initiative January 2025"
+        ]
+      }
+    },
+    {
+      "day": "2026-03-30",
+      "label": "2026-03-30",
+      "story_count": 1,
+      "status": "final",
+      "status_note": "Brief chiuso: la giornata non si aggiorna più e resta come archivio stabile della sequenza.",
+      "finalization_note": "Giornata già consolidata dopo la chiusura notturna del ciclo di aggiornamento.",
+      "dominant_frame": "deterrence",
+      "dominant_theme_label": "deterrenza e segnalazione coercitiva",
+      "top_keywords": [
+        "l'iran",
+        "rischia",
+        "innescare",
+        "nuova",
+        "ondata",
+        "proliferazione",
+        "nucleare",
+        "risks",
+        "triggering",
+        "wave"
+      ],
+      "continuity_markers": [],
+      "discontinuity_markers": [
+        "l'iran",
+        "rischia",
+        "innescare",
+        "nuova"
+      ],
+      "actors_in_focus": [
+        "Europa",
+        "Stati Uniti",
+        "Iran"
+      ],
+      "themes_in_focus": [],
+      "manual_lens": "deterrenza e segnalazione coercitiva",
+      "key_stories": [
+        {
+          "time": "07:00",
+          "source": "Chatham House",
+          "title": "La guerra con l'Iran rischia di innescare una nuova ondata di proliferazione nucleare",
+          "summary": "La guerra con l'Iran rischia di innescare una nuova ondata di proliferazione nucleare Chatham House"
+        }
+      ],
+      "analytical_summary": {
+        "overview": "Il cuore della giornata del 2026-03-30 sta nel modo in cui segnali coercitivi e margini negoziali vengono fatti convivere nello stesso ciclo di crisi. I temi che pesano di più sono deterrenza e segnalazione coercitiva, mentre Europa, Stati Uniti e Iran restano gli attori che definiscono il livello di rischio percepito. I segnali più visibili ruotano attorno a l'iran e rischia. Il numero ridotto di notizie rende ancora più leggibile il punto di pressione prevalente.",
+        "storyline": "Sul piano dei fatti, il punto più visibile della giornata è che la guerra con l'Iran rischia di innescare una nuova ondata di proliferazione nucleare Chatham House. Questo episodio concentra quasi da solo il significato operativo della sequenza.",
+        "source_angle": "Tra le fonti emerge una ripartizione abbastanza chiara: Chatham House insiste soprattutto su la guerra con l'iran rischia di innescare una nuova ondata di proliferazione nucleare.",
+        "implication": "Il punto politico più delicato è che il nucleo centrale della crisi non vengono gestiti come fasi separate: pressione e pausa tattica si sovrappongono. Questo costringe Europa e Stati Uniti a misurare non solo la forza del segnale, ma anche il rischio di essere letti come incoerenti o poco credibili. Le fonti che pesano di più nella giornata sono Chatham House, e questo aiuta a capire quale lato della crisi sta ricevendo maggiore attenzione.",
+        "strategic_reading": "La chiave interpretativa più utile è quella della deterrenza: minacce, posture e segnali di forza servono a spostare il calcolo dell'avversario, ma possono anche accelerare la spirale di insicurezza.",
+        "trajectory": "Rispetto al 2026-03-27, il baricentro della giornata si sposta verso l'iran e rischia, segnalando una variazione nel ritmo o nella scala della pressione.",
+        "watchpoint": "Conviene monitorare se il segnale resta dimostrativo o se apre una soglia nuova di ritorsione e contro-ritorsione."
+      },
+      "sources": [
+        "Chatham House"
+      ],
+      "retrieved_context_titles": [
+        "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the",
+        "Beyond “Maximum Pressure” in US POLICY ON IRAN Leveraging Regional Partners to Contain Iran’s Actions and Shape its Future Choices MEI Strategic Initiative January 2025",
+        "Clandestine Axis of Middle East Hegemony: Iran, Israel, and the US. www.habtoorresearch.com"
+      ],
+      "retrieved_context": [
+        {
+          "chunk_id": "002-paper-chunk-002",
+          "title": "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the",
+          "text": "such risks. The study refines the security dilemma framework by positioning communication as a constitutive driver of insecurity rather than merely a reflection of material capabilities. It argues that interpretive transparency, institutionalised back - channels, and sustained dialogue are critical for transforming security communication from an in - strument of threat amplification into a means of conflict management. The findings contribute to theoretical debates on the communicative dimensions of security and offer insights for policymakers seeking durable de-escalation mechanisms. keywords Security Dilemma, Security Communication, Iran-Israel Conflict, 12-Day War, International Security."
+        },
+        {
+          "chunk_id": "002-paper-chunk-007",
+          "title": "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the",
+          "text": "Wheeler (2008) later advanced the discussion by identifying the psychological dimensions of the dilemma, particu- larly fear and identity. Collectively, these scholars underscore that insecurity is not only structural but also perceptual, driven by how states interpret one another’s signals. Security Communication and the Security Dilemma: Insights from the Iran-Israel Rivalry International Journal of Contemporary Security Studies • Vol. 2, No. 1 • 19 This theoretical lens provides a structural explanation of the Iran-Israel rivalry. Defensive actions such as Iran’s uranium enrichment or Israel’s pre-emptive military postures are interpreted by each side as offensive provocations. Consequent"
+        },
+        {
+          "chunk_id": "beyond-maximum-pressure-in-us-policy-on-iran-chunk-005",
+          "title": "Beyond “Maximum Pressure” in US POLICY ON IRAN Leveraging Regional Partners to Contain Iran’s Actions and Shape its Future Choices MEI Strategic Initiative January 2025",
+          "text": "with multiple defense, diplomatic, and economic policy tools and an extensive network of relationships to shape dynamics, including on responding to Iran’s role in the region. Iran remains the overriding strategic challenge and threat to US national security interests in the Middle East. 5 In 4. Farnaz Fassihi and Ronen Bergman, “Iran Begins to Evacuate Military Officials and Personnel From Syria,” The New York Times, December 6, 2024, https:/ /www.nytimes.com/2024/12/06/world/ middleeast/iran-syria-evacuation.html. 5. “Annual Threat Assessment of the U.S. Intelligence Introduction and Strategic Context The Islamic Republic of Iran is currently in its weakest and most isolated position since"
+        },
+        {
+          "chunk_id": "iran-us-and-israel-en-chunk-086",
+          "title": "Clandestine Axis of Middle East Hegemony: Iran, Israel, and the US. www.habtoorresearch.com",
+          "text": "shared the same interest with Iran about supporting the USA invasion to Iraq, as they both perceived the Saddam Hussien regime as a threat. In recent years, skepticism over the necessity of military action against Iran has grown even within Israel’s security establishment. Five former Mossad chiefs have publicly opposed a preemptive strike on Iran, dismissing it as “madness. ” Among them, Ephraim Halevy has argued that Iran does not pose an existential threat to Israel and that preventing Tehran from obtaining nuclear weapons capability is achievable without the use of force. Trita Parsi provides further insight into Israel’s security calculus. When asked about Israel’s internal assessment o"
+        }
+      ],
+      "commentator_prompt_package": {
+        "instruction": "Scrivi una sintesi giornaliera in italiano chiaro, analitico ma leggibile. Spiega cosa conta nella giornata, quale meccanismo strategico o geoeconomico aiuta a leggerla, che cosa cambia rispetto ai giorni precedenti e che cosa conviene monitorare dopo. Non citare il materiale di supporto e non usare formule meta-discorsive.",
+        "dominant_frame": "deterrence",
+        "keywords": [
+          "l'iran",
+          "rischia",
+          "innescare",
+          "nuova",
+          "ondata",
+          "proliferazione",
+          "nucleare",
+          "risks",
+          "triggering",
+          "wave"
+        ],
+        "continuity_markers": [],
+        "discontinuity_markers": [
+          "l'iran",
+          "rischia",
+          "innescare",
+          "nuova"
+        ],
+        "retrieved_context_titles": [
+          "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the",
+          "Beyond “Maximum Pressure” in US POLICY ON IRAN Leveraging Regional Partners to Contain Iran’s Actions and Shape its Future Choices MEI Strategic Initiative January 2025",
+          "Clandestine Axis of Middle East Hegemony: Iran, Israel, and the US. www.habtoorresearch.com"
+        ]
+      }
+    },
+    {
+      "day": "2026-03-27",
+      "label": "2026-03-27",
+      "story_count": 2,
+      "status": "final",
+      "status_note": "Brief chiuso: la giornata non si aggiorna più e resta come archivio stabile della sequenza.",
+      "finalization_note": "Giornata già consolidata dopo la chiusura notturna del ciclo di aggiornamento.",
+      "dominant_frame": "deterrence",
+      "dominant_theme_label": "deterrenza e segnalazione coercitiva",
+      "top_keywords": [
+        "oppure",
+        "international",
+        "institute",
+        "evidenzia",
+        "strisciante",
+        "intelligenza",
+        "artificiale",
+        "notizia",
+        "piano",
+        "seguire"
+      ],
+      "continuity_markers": [],
+      "discontinuity_markers": [
+        "oppure",
+        "international",
+        "institute",
+        "evidenzia"
+      ],
+      "actors_in_focus": [
+        "Stati Uniti",
+        "Iran",
+        "Europa"
+      ],
+      "themes_in_focus": [
+        "pressione militare",
+        "ordine regionale",
+        "negoziato e tregua"
+      ],
+      "manual_lens": "deterrenza e segnalazione coercitiva",
+      "key_stories": [
+        {
+          "time": "07:00",
+          "source": "Chatham House",
+          "title": "La guerra in Iran evidenzia l’uso strisciante dell’intelligenza artificiale in guerra",
+          "summary": "La guerra in Iran evidenzia l’uso strisciante dell’intelligenza artificiale nella guerra Chatham House"
+        },
+        {
+          "time": "07:00",
+          "source": "IISS",
+          "title": "Mappatura dei danni: attacchi iraniani al GCC",
+          "summary": "Mappatura dei danni: attacchi iraniani al GCC L'Istituto Internazionale per gli Studi Strategici"
+        }
+      ],
+      "analytical_summary": {
+        "overview": "Il cuore della giornata del 2026-03-27 sta nel modo in cui segnali coercitivi e margini negoziali vengono fatti convivere nello stesso ciclo di crisi. I temi che pesano di più sono pressione militare, ordine regionale e negoziato e tregua, mentre Stati Uniti, Iran e Europa restano gli attori che definiscono il livello di rischio percepito. I segnali più visibili ruotano attorno a oppure e international.",
+        "storyline": "Sul piano dei fatti, la giornata si apre con il fatto che la guerra in Iran evidenzia l’uso strisciante dell’intelligenza artificiale nella guerra Chatham House, a cui si aggiunge che mappatura dei danni: attacchi iraniani al GCC L'Istituto Internazionale per gli Studi Strategici.",
+        "source_angle": "Tra le fonti emerge una ripartizione abbastanza chiara: Chatham House insiste soprattutto su la guerra in iran evidenzia l’uso strisciante dell’intelligenza artificiale in guerra; IISS insiste soprattutto su mappatura dei danni: attacchi iraniani al gcc.",
+        "implication": "Il punto politico più delicato è che pressione militare e ordine regionale non vengono gestiti come fasi separate: pressione e pausa tattica si sovrappongono. Questo costringe Stati Uniti e Iran a misurare non solo la forza del segnale, ma anche il rischio di essere letti come incoerenti o poco credibili. Le fonti che pesano di più nella giornata sono Chatham House e IISS, e questo aiuta a capire quale lato della crisi sta ricevendo maggiore attenzione.",
+        "strategic_reading": "La chiave interpretativa più utile è quella della deterrenza: minacce, posture e segnali di forza servono a spostare il calcolo dell'avversario, ma possono anche accelerare la spirale di insicurezza.",
+        "trajectory": "Rispetto al 2026-03-26, il baricentro della giornata si sposta verso oppure e international, segnalando una variazione nel ritmo o nella scala della pressione.",
+        "watchpoint": "Conviene monitorare se il segnale resta dimostrativo o se apre una soglia nuova di ritorsione e contro-ritorsione."
+      },
+      "sources": [
+        "Chatham House",
+        "IISS"
+      ],
+      "retrieved_context_titles": [
+        "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the"
+      ],
+      "retrieved_context": [
+        {
+          "chunk_id": "002-paper-chunk-002",
+          "title": "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the",
+          "text": "such risks. The study refines the security dilemma framework by positioning communication as a constitutive driver of insecurity rather than merely a reflection of material capabilities. It argues that interpretive transparency, institutionalised back - channels, and sustained dialogue are critical for transforming security communication from an in - strument of threat amplification into a means of conflict management. The findings contribute to theoretical debates on the communicative dimensions of security and offer insights for policymakers seeking durable de-escalation mechanisms. keywords Security Dilemma, Security Communication, Iran-Israel Conflict, 12-Day War, International Security."
+        },
+        {
+          "chunk_id": "002-paper-chunk-005",
+          "title": "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the",
+          "text": "instruments that gen- erate insecurity and deepen antagonism. Comparatively, the misinterpretation of signals in the Iran and Israel rivalry echoes other his - torical confrontations such as the Cuban Missile Crisis (Scott & Hughes, 2015), the Cold War arms race, the 1999 Kargil conflict (Gill, 2021), and the ongoing Russia-Ukraine war. In each instance, communicative misjudgments created opportunities for miscalculation and escalation. Against this background, this study hypothesises that miscommunication and rhetorical escalation are central mechanisms intensifying the security dilemma in the Iran and Israel rivalry. Accordingly, the study asks how security communication, intended as reass"
+        },
+        {
+          "chunk_id": "002-paper-chunk-006",
+          "title": "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the",
+          "text": "they explain how communication functions as both a reassurance and a prov - ocation mechanism in enduring rivalries such as that between Iran and Israel. While the security dilemma offers a structural and psychological understanding of insecurity, securitisation theory brings a communicative perspective that highlights how discourse transforms ordinary politics into perceived existential threats. Their integration provides a platform for introducing the concept of security communication, which captures how messages, signals, and symbols intensify or alleviate tensions in protracted conflicts. The security dilemma remains one of the most enduring and influential concepts in international rela"
+        },
+        {
+          "chunk_id": "002-paper-chunk-007",
+          "title": "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the",
+          "text": "Wheeler (2008) later advanced the discussion by identifying the psychological dimensions of the dilemma, particu- larly fear and identity. Collectively, these scholars underscore that insecurity is not only structural but also perceptual, driven by how states interpret one another’s signals. Security Communication and the Security Dilemma: Insights from the Iran-Israel Rivalry International Journal of Contemporary Security Studies • Vol. 2, No. 1 • 19 This theoretical lens provides a structural explanation of the Iran-Israel rivalry. Defensive actions such as Iran’s uranium enrichment or Israel’s pre-emptive military postures are interpreted by each side as offensive provocations. Consequent"
+        }
+      ],
+      "commentator_prompt_package": {
+        "instruction": "Scrivi una sintesi giornaliera in italiano chiaro, analitico ma leggibile. Spiega cosa conta nella giornata, quale meccanismo strategico o geoeconomico aiuta a leggerla, che cosa cambia rispetto ai giorni precedenti e che cosa conviene monitorare dopo. Non citare il materiale di supporto e non usare formule meta-discorsive.",
+        "dominant_frame": "deterrence",
+        "keywords": [
+          "oppure",
+          "international",
+          "institute",
+          "evidenzia",
+          "strisciante",
+          "intelligenza",
+          "artificiale",
+          "notizia",
+          "piano",
+          "seguire"
+        ],
+        "continuity_markers": [],
+        "discontinuity_markers": [
+          "oppure",
+          "international",
+          "institute",
+          "evidenzia"
+        ],
+        "retrieved_context_titles": [
+          "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the"
+        ]
+      }
+    },
+    {
+      "day": "2026-03-26",
+      "label": "2026-03-26",
+      "story_count": 1,
+      "status": "final",
+      "status_note": "Brief chiuso: la giornata non si aggiorna più e resta come archivio stabile della sequenza.",
+      "finalization_note": "Giornata già consolidata dopo la chiusura notturna del ciclo di aggiornamento.",
+      "dominant_frame": "deterrence",
+      "dominant_theme_label": "deterrenza e segnalazione coercitiva",
+      "top_keywords": [
+        "larry",
+        "fink",
+        "corriere",
+        "sera",
+        "vedo",
+        "maggiore",
+        "neutralizzazione",
+        "cessazione",
+        "dice",
+        "blackrock"
+      ],
+      "continuity_markers": [],
+      "discontinuity_markers": [
+        "larry",
+        "fink",
+        "corriere",
+        "sera"
+      ],
+      "actors_in_focus": [
+        "Europa",
+        "Iran"
+      ],
+      "themes_in_focus": [],
+      "manual_lens": "deterrenza e segnalazione coercitiva",
+      "key_stories": [
+        {
+          "time": "07:00",
+          "source": "Corriere della Sera",
+          "title": "Â«Vedo una maggiore probabilitÃ di neutralizzazione o di cessazione della guerra in IranÂ», dice Larry Fink di Blackrock",
+          "summary": "«Vedo una maggiore probabilità di neutralizzazione o cessazione della guerra in Iran», dice Larry Fink di Blackrock al Corriere della Sera"
+        }
+      ],
+      "analytical_summary": {
+        "overview": "Il cuore della giornata del 2026-03-26 sta nel modo in cui segnali coercitivi e margini negoziali vengono fatti convivere nello stesso ciclo di crisi. I temi che pesano di più sono deterrenza e segnalazione coercitiva, mentre Europa e Iran restano gli attori che definiscono il livello di rischio percepito. I segnali più visibili ruotano attorno a larry e fink. Il numero ridotto di notizie rende ancora più leggibile il punto di pressione prevalente.",
+        "storyline": "Sul piano dei fatti, il punto più visibile della giornata è che «Vedo una maggiore probabilità di neutralizzazione o cessazione della guerra in Iran», dice Larry Fink di Blackrock al Corriere della Sera. Questo episodio concentra quasi da solo il significato operativo della sequenza.",
+        "source_angle": "Tra le fonti emerge una ripartizione abbastanza chiara: Corriere della Sera insiste soprattutto su â«vedo una maggiore probabilitã di neutralizzazione o di cessazione della guerra in iranâ», dice larry fink di blackrock.",
+        "implication": "Il punto politico più delicato è che il nucleo centrale della crisi non vengono gestiti come fasi separate: pressione e pausa tattica si sovrappongono. Questo costringe Europa e Iran a misurare non solo la forza del segnale, ma anche il rischio di essere letti come incoerenti o poco credibili. Le fonti che pesano di più nella giornata sono Corriere della Sera, e questo aiuta a capire quale lato della crisi sta ricevendo maggiore attenzione.",
+        "strategic_reading": "La chiave interpretativa più utile è quella della deterrenza: minacce, posture e segnali di forza servono a spostare il calcolo dell'avversario, ma possono anche accelerare la spirale di insicurezza.",
+        "trajectory": "Essendo il primo blocco della sequenza recente, questa giornata funziona come base iniziale del quadro evolutivo.",
+        "watchpoint": "Conviene monitorare se il segnale resta dimostrativo o se apre una soglia nuova di ritorsione e contro-ritorsione."
+      },
+      "sources": [
+        "Corriere della Sera"
+      ],
+      "retrieved_context_titles": [
+        "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the"
+      ],
+      "retrieved_context": [
+        {
+          "chunk_id": "002-paper-chunk-002",
+          "title": "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the",
+          "text": "such risks. The study refines the security dilemma framework by positioning communication as a constitutive driver of insecurity rather than merely a reflection of material capabilities. It argues that interpretive transparency, institutionalised back - channels, and sustained dialogue are critical for transforming security communication from an in - strument of threat amplification into a means of conflict management. The findings contribute to theoretical debates on the communicative dimensions of security and offer insights for policymakers seeking durable de-escalation mechanisms. keywords Security Dilemma, Security Communication, Iran-Israel Conflict, 12-Day War, International Security."
+        },
+        {
+          "chunk_id": "002-paper-chunk-007",
+          "title": "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the",
+          "text": "Wheeler (2008) later advanced the discussion by identifying the psychological dimensions of the dilemma, particu- larly fear and identity. Collectively, these scholars underscore that insecurity is not only structural but also perceptual, driven by how states interpret one another’s signals. Security Communication and the Security Dilemma: Insights from the Iran-Israel Rivalry International Journal of Contemporary Security Studies • Vol. 2, No. 1 • 19 This theoretical lens provides a structural explanation of the Iran-Israel rivalry. Defensive actions such as Iran’s uranium enrichment or Israel’s pre-emptive military postures are interpreted by each side as offensive provocations. Consequent"
+        },
+        {
+          "chunk_id": "002-paper-chunk-012",
+          "title": "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the",
+          "text": "depending on interpretation. However, despite these advances, much of the literature re - mains focused on state elites, neglecting the roles of media, public discourse, and transnational communication that have become increasingly vital in the digital age. Security Communication in the Iran-Israel Rivalry Despite progress in integrating communication into security studies, limited research explicitly applies the concept of security communication to enduring Middle Eastern rivalries. Existing works have tended to prioritise material or strategic dimensions, such as Iran’s regional interventions or Israel’s deterrence strategies (Zafar, Akhtar, and Shaukat, 2025). Few have examined how verbal"
+        },
+        {
+          "chunk_id": "002-paper-chunk-023",
+          "title": "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the",
+          "text": "(1950) foundational insight that the se- curity dilemma emerges when defensive measures are misinterpreted as offensive, and with Jervis’s (1978) view that perception and interpretation, more than material capability, often drive escalation. The communicative dimension of the Iran-Israel rivalry further demonstrates that misperception is not a by-product of conflict but a structural outcome of how states speak, signal, and perform their insecurities. Booth and Wheeler’s (2008) notion of “security dilemma sensibility” is instructive here, as it calls for empathy and interpretive caution in state communication. However, such sensibility remains absent in the Iran-Israel context, where interact"
+        }
+      ],
+      "commentator_prompt_package": {
+        "instruction": "Scrivi una sintesi giornaliera in italiano chiaro, analitico ma leggibile. Spiega cosa conta nella giornata, quale meccanismo strategico o geoeconomico aiuta a leggerla, che cosa cambia rispetto ai giorni precedenti e che cosa conviene monitorare dopo. Non citare il materiale di supporto e non usare formule meta-discorsive.",
+        "dominant_frame": "deterrence",
+        "keywords": [
+          "larry",
+          "fink",
+          "corriere",
+          "sera",
+          "vedo",
+          "maggiore",
+          "neutralizzazione",
+          "cessazione",
+          "dice",
+          "blackrock"
+        ],
+        "continuity_markers": [],
+        "discontinuity_markers": [
+          "larry",
+          "fink",
+          "corriere",
+          "sera"
+        ],
+        "retrieved_context_titles": [
+          "Volume 2 • Issue 1 • 2026 International Journal of Contemporary Security Studies (IJCSS) Faculty of Security Studies, University of Belgrade Article Security Communication and the"
+        ]
+      }
+    }
+  ]
+}
