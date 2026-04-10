@@ -4,8 +4,61 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Work In Progress</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Teko:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      cursor: auto;
+    }
+    a,
+    button {
+      cursor: pointer;
+    }
+    .wip-main {
+      min-height: 72vh;
+      display: grid;
+      place-items: center;
+    }
+    .wip-title {
+      margin: 0;
+      font-family: "Teko", sans-serif;
+      font-size: clamp(4.4rem, 11vw, 8.8rem);
+      font-weight: 600;
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
-  Work in progress
+  <div class="noise"></div>
+  <div class="crosshair" aria-hidden="true"></div>
+
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="brand-row">
+        <div class="brand-mark">
+          <span class="brand-icon"></span>
+          <span class="brand-name">IRAN WAR MONITOR</span>
+        </div>
+        <nav class="top-nav" aria-label="Navigazione principale">
+          <a href="index.html#feed">Feed</a>
+          <a href="work-in-progress.html">Index</a>
+        </nav>
+        <div class="status-chip">
+          <span class="live-dot"></span>
+          <span>Live Node</span>
+        </div>
+      </div>
+
+      <main class="wip-main">
+        <h1 class="wip-title">Work in progress</h1>
+      </main>
+    </header>
+  </div>
 </body>
 </html>
