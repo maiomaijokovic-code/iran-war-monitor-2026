@@ -71,15 +71,15 @@ function fallbackCommentary(story) {
   const text = `${story.title_it || story.title || ""} ${story.summary_it || story.summary || ""}`.toLowerCase();
 
   if (text.includes("hormuz") || text.includes("maritt") || text.includes("tanker")) {
-    return "Commento: il nodo principale e marittimo. Se il rischio su rotte e transiti cresce, puo aumentare rapidamente la pressione regionale.";
+    return "Il nodo principale è marittimo. Se il rischio su rotte e transiti cresce, può aumentare rapidamente la pressione regionale.";
   }
   if (text.includes("colloqui") || text.includes("negoz") || text.includes("accord")) {
-    return "Commento: emerge una finestra diplomatica, ma resta fragile. Il punto chiave e capire se alle parole seguono segnali operativi coerenti.";
+    return "Emerge una finestra diplomatica, ma resta fragile. Il punto chiave è capire se alle parole seguono segnali operativi coerenti.";
   }
   if (text.includes("attacco") || text.includes("missil") || text.includes("drone") || text.includes("bombard")) {
-    return "Commento: indicazione di escalation tattica. Va monitorata la probabilita di risposta a catena nelle prossime 24-48 ore.";
+    return "Indicazione di escalation tattica. Va monitorata la probabilità di risposta a catena nelle prossime 24-48 ore.";
   }
-  return "Commento: il quadro resta instabile e ad alta volatilita. Conta soprattutto la continuita degli eventi nel brevissimo periodo.";
+  return "Il quadro resta instabile e ad alta volatilità. Conta soprattutto la continuità degli eventi nel brevissimo periodo.";
 }
 
 function renderStories(stories) {
