@@ -419,6 +419,18 @@ h2 {
   cursor: pointer;
 }
 
+.refresh-button:disabled {
+  opacity: 0.6;
+}
+
+.refresh-status {
+  margin: 8px 0 0;
+  color: #c1c9cf;
+  font-size: 0.98rem;
+  line-height: 1.2;
+  min-height: 1.2em;
+}
+
 .news-feed {
   border-top: 1px solid rgba(255, 255, 255, 0.12);
 }

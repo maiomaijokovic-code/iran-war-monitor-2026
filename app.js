@@ -6,8 +6,14 @@ const storiesCount = document.getElementById("stories-count");
 const nextRefresh = document.getElementById("next-refresh");
 const cycleMinutes = document.getElementById("cycle-minutes");
 const manualRefresh = document.getElementById("manual-refresh");
+const refreshStatus = document.getElementById("refresh-status");
 const trackerCursor = document.getElementById("tracker-cursor");
 const isTouchDevice = window.matchMedia("(hover: none), (pointer: coarse)").matches;
+const GITHUB_OWNER = "maiomaijokovic-code";
+const GITHUB_REPO = "iran-war-monitor-2026";
+const GITHUB_WORKFLOW_FILE = "deploy-pages.yml";
+const GITHUB_REF = "main";
+const TOKEN_STORAGE_KEY = "iwm_github_actions_token";
 
 const cursorState = {
   currentX: window.innerWidth / 2,
@@ -15,6 +21,8 @@ const cursorState = {
   targetX: window.innerWidth / 2,
   targetY: window.innerHeight / 2
 };
+
+let latestGeneratedAt = null;
 
 function formatDisplayTime(value) {
   const date = new Date(value);
@@ -85,6 +93,7 @@ function updateCountdown() {
 }
 
 function updateMeta(payload) {
+  latestGeneratedAt = payload.generated_at || null;
   lastUpdated.textContent = payload.generated_at ? formatDisplayTime(payload.generated_at) : "--";
   storiesCount.textContent = String((payload.stories || []).length);
   if (cycleMinutes) {
@@ -118,6 +127,83 @@ async function loadStories() {
   }
 }
 
+function setRefreshStatus(message) {
+  if (!refreshStatus) {
+    return;
+  }
+
+  refreshStatus.textContent = message || "";
+}
+
+function getActionsToken() {
+  return window.localStorage.getItem(TOKEN_STORAGE_KEY) || "";
+}
+
+function askAndStoreToken() {
+  const token = window.prompt(
+    "Inserisci un GitHub token (scope Actions write) per avviare subito l'aggiornamento. Lascia vuoto per solo refresh locale.",
+    getActionsToken()
+  );
+
+  if (!token) {
+    return "";
+  }
+
+  const cleanToken = token.trim();
+  if (!cleanToken) {
+    return "";
+  }
+
+  window.localStorage.setItem(TOKEN_STORAGE_KEY, cleanToken);
+  return cleanToken;
+}
+
+async function triggerRemoteUpdate() {
+  let token = getActionsToken();
+  if (!token) {
+    token = askAndStoreToken();
+  }
+
+  if (!token) {
+    return false;
+  }
+
+  const endpoint = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/actions/workflows/${GITHUB_WORKFLOW_FILE}/dispatches`;
+  const response = await fetch(endpoint, {
+    method: "POST",
+    headers: {
+      Accept: "application/vnd.github+json",
+      Authorization: `Bearer ${token}`,
+      "X-GitHub-Api-Version": "2022-11-28",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ ref: GITHUB_REF })
+  });
+
+  if (!response.ok) {
+    if (response.status === 401 || response.status === 403) {
+      window.localStorage.removeItem(TOKEN_STORAGE_KEY);
+    }
+
+    throw new Error(`Dispatch failed (${response.status})`);
+  }
+
+  return true;
+}
+
+async function pollForNewPublication(previousGeneratedAt, attempts = 18) {
+  for (let i = 0; i < attempts; i += 1) {
+    await new Promise((resolve) => setTimeout(resolve, 10000));
+    await loadStories();
+
+    if (latestGeneratedAt && latestGeneratedAt !== previousGeneratedAt) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 function animateCursor() {
   if (!trackerCursor) {
     return;
@@ -129,8 +215,34 @@ function animateCursor() {
   window.requestAnimationFrame(animateCursor);
 }
 
-manualRefresh.addEventListener("click", () => {
-  loadStories();
+manualRefresh.addEventListener("click", async () => {
+  const previousGeneratedAt = latestGeneratedAt;
+  manualRefresh.disabled = true;
+
+  try {
+    setRefreshStatus("Aggiornamento locale in corso...");
+    await loadStories();
+
+    const workflowTriggered = await triggerRemoteUpdate().catch(() => false);
+    if (!workflowTriggered) {
+      setRefreshStatus("Refresh locale completato. Per aggiornare prima dei 10 minuti, inserisci un token GitHub Actions.");
+      return;
+    }
+
+    setRefreshStatus("Workflow avviato. Attendo nuove notizie (circa 1-3 minuti)...");
+    const hasNewPublication = await pollForNewPublication(previousGeneratedAt);
+
+    if (hasNewPublication) {
+      setRefreshStatus("Nuove notizie pubblicate e caricate.");
+      return;
+    }
+
+    setRefreshStatus("Workflow avviato, ma il nuovo pacchetto non è ancora online. Riprova tra poco.");
+  } catch (error) {
+    setRefreshStatus("Errore durante l'aggiornamento immediato. Verifica token GitHub o riprova.");
+  } finally {
+    manualRefresh.disabled = false;
+  }
 });
 
 if (!isTouchDevice && trackerCursor) {
