@@ -429,8 +429,11 @@ h2 {
 }
 
 .refresh-button {
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(255, 59, 48, 0.12);
+  border: 1px solid rgba(110, 154, 189, 0.34);
+  background: linear-gradient(180deg, rgba(46, 76, 102, 0.68), rgba(24, 42, 58, 0.82));
+  box-shadow:
+    inset 0 1px 0 rgba(210, 228, 241, 0.08),
+    0 10px 24px rgba(9, 16, 22, 0.18);
   color: var(--text);
   padding: 12px 16px;
   font: inherit;
@@ -438,6 +441,23 @@ h2 {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   cursor: pointer;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.refresh-button:hover {
+  border-color: rgba(152, 190, 220, 0.52);
+  background: linear-gradient(180deg, rgba(57, 92, 122, 0.76), rgba(30, 52, 72, 0.88));
+  box-shadow:
+    inset 0 1px 0 rgba(220, 236, 247, 0.1),
+    0 14px 28px rgba(8, 15, 22, 0.24);
+}
+
+.refresh-button:active {
+  transform: translateY(1px);
 }
 
 .refresh-button:disabled {

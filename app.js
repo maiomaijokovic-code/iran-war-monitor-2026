@@ -105,19 +105,61 @@ function isGenericSubtitle(text = "") {
   return genericMarkers.some((marker) => lowered.includes(marker));
 }
 
+function normalizeForComparison(text = "") {
+  return text
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}\s]/gu, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function isRedundantWithTitle(candidate = "", title = "") {
+  const normalizedCandidate = normalizeForComparison(candidate);
+  const normalizedTitle = normalizeForComparison(title);
+
+  if (!normalizedCandidate || !normalizedTitle) {
+    return false;
+  }
+
+  if (
+    normalizedCandidate === normalizedTitle ||
+    normalizedCandidate.includes(normalizedTitle) ||
+    normalizedTitle.includes(normalizedCandidate)
+  ) {
+    return true;
+  }
+
+  const titleWords = new Set(normalizedTitle.split(" ").filter((word) => word.length > 3));
+  const candidateWords = new Set(normalizedCandidate.split(" ").filter((word) => word.length > 3));
+
+  if (!titleWords.size || !candidateWords.size) {
+    return false;
+  }
+
+  let overlapCount = 0;
+  for (const word of titleWords) {
+    if (candidateWords.has(word)) {
+      overlapCount += 1;
+    }
+  }
+
+  return overlapCount / titleWords.size >= 0.8;
+}
+
 function chooseSubtitle(story) {
+  const displayTitle = cleanTitleForDisplay(story.title_it || story.title || "", story.source || "", story.url || "");
   const candidates = [
+    story.comment_it,
     story.subtitle_it,
     story.subtitle,
     story.lead_sentence_it,
     story.lead_sentence,
-    story.comment_it,
     story.summary_it,
     story.summary
   ];
 
   for (const candidate of candidates) {
-    if (!candidate || isGenericSubtitle(candidate)) {
+    if (!candidate || isGenericSubtitle(candidate) || isRedundantWithTitle(candidate, displayTitle)) {
       continue;
     }
     return candidate;
@@ -299,16 +341,21 @@ function animateCursor() {
 
 manualRefresh.addEventListener("click", async () => {
   const previousGeneratedAt = latestGeneratedAt;
-  const tokenFromClick = getActionsToken() || askAndStoreToken();
+  const tokenFromClick = getActionsToken();
   manualRefresh.disabled = true;
 
   try {
-    setRefreshStatus("Aggiornamento locale in corso...");
+    setRefreshStatus("Refresh del feed in corso...");
     await loadStories();
+
+    if (!tokenFromClick) {
+      setRefreshStatus("Feed ricaricato. Se vuoi forzare anche l'aggiornamento remoto, salva prima un token GitHub Actions.");
+      return;
+    }
 
     const workflowTriggered = await triggerRemoteUpdate(tokenFromClick).catch(() => false);
     if (!workflowTriggered) {
-      setRefreshStatus("Refresh locale completato. Per aggiornare prima dei 10 minuti, inserisci un token GitHub Actions.");
+      setRefreshStatus("Feed ricaricato, ma l'aggiornamento remoto non e' partito. Verifica il token GitHub Actions.");
       return;
     }
 
