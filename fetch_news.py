@@ -1,9 +1,38 @@
+from __future__ import annotations
 
+import json
+import hashlib
+import re
+import urllib.error
+import urllib.parse
+import urllib.request
+import xml.etree.ElementTree as ET
+from dataclasses import dataclass
+from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
+from html import unescape
+from pathlib import Path
+from urllib.parse import urlparse
+
+
+ROOT = Path(__file__).resolve().parent
+DATA_DIR = ROOT / "data"
 OUTPUT_FILE = DATA_DIR / "news.json"
 TIMEOUT_SECONDS = 20
 MAX_ITEMS_PER_SOURCE = 3
 MAX_SUMMARY_LENGTH = 260
 ARTICLE_FETCH_TIMEOUT_SECONDS = 8
+MOJIBAKE_MARKERS = (
+    "Ã",
+    "Â",
+    "â€™",
+    "â€“",
+    "â€”",
+    "â€œ",
+    "â€",
+    "â€˜",
+    "â€¦",
+)
 
 USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -127,9 +156,45 @@ def fetch_text(url: str, timeout: int = TIMEOUT_SECONDS) -> str:
         return response.read().decode("utf-8", errors="replace")
 
 
+def looks_mojibake(text: str) -> bool:
+    if not text:
+        return False
+    return any(marker in text for marker in MOJIBAKE_MARKERS) or "�" in text
+
+
+def repair_mojibake(text: str) -> str:
+    if not text or not looks_mojibake(text):
+        return text
+
+    def score(value: str) -> tuple[int, int]:
+        marker_hits = sum(value.count(marker) for marker in MOJIBAKE_MARKERS)
+        return (marker_hits + value.count("�"), len(value))
+
+    best = text
+    seen = {text}
+    queue = [text]
+
+    while queue:
+        current = queue.pop(0)
+        for encoding in ("latin1", "cp1252"):
+            try:
+                candidate = current.encode(encoding).decode("utf-8")
+            except Exception:
+                continue
+            if candidate in seen:
+                continue
+            seen.add(candidate)
+            queue.append(candidate)
+            if score(candidate) < score(best):
+                best = candidate
+
+    return best
+
+
 def strip_html(value: str) -> str:
     text = re.sub(r"<[^>]+>", " ", value or "")
     text = unescape(text)
+    text = repair_mojibake(text)
     return re.sub(r"\s+", " ", text).strip()
 
 
@@ -540,11 +605,12 @@ def translate_to_italian(text: str) -> str:
         payload = fetch_text(url)
         data = json.loads(payload)
         if isinstance(data, list) and data and isinstance(data[0], list):
-            return "".join(part[0] for part in data[0] if part and part[0]).strip()
+            translated = "".join(part[0] for part in data[0] if part and part[0]).strip()
+            return repair_mojibake(translated)
     except Exception:
-        return text
+        return repair_mojibake(text)
 
-    return text
+    return repair_mojibake(text)
 
 
 def parse_datetime(value: str) -> tuple[str, float]:
