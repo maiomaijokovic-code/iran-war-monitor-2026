@@ -14,7 +14,7 @@
 }
 
 html {
-  background: #0a1117;
+  background: #18140f;
 }
 
 body {
@@ -25,11 +25,10 @@ body {
   color: var(--text);
   font-family: "Rajdhani", sans-serif;
   background:
-    radial-gradient(circle at 14% 18%, rgba(160, 58, 47, 0.2), transparent 0 20%),
-    radial-gradient(circle at 82% 12%, rgba(77, 121, 156, 0.34), transparent 0 28%),
-    radial-gradient(circle at 52% 62%, rgba(129, 157, 180, 0.12), transparent 0 24%),
-    linear-gradient(180deg, rgba(24, 39, 52, 0.7), rgba(8, 13, 18, 0.9)),
-    linear-gradient(135deg, #182734, #0d141b 46%, #091017);
+    linear-gradient(180deg, rgba(14, 12, 10, 0.34), rgba(8, 8, 8, 0.48)),
+    radial-gradient(circle at 18% 16%, rgba(196, 111, 75, 0.12), transparent 0 22%),
+    radial-gradient(circle at 78% 18%, rgba(210, 188, 154, 0.08), transparent 0 24%),
+    url("old-dirty-concrete-textures-background-vintage-filter-effect.jpg") center center / cover no-repeat fixed;
 }
 
 body::before {
@@ -41,7 +40,7 @@ body::before {
     linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   background-size: 100% 3px, 3px 100%;
-  opacity: 0.18;
+  opacity: 0.14;
 }
 
 body::after {
@@ -50,20 +49,20 @@ body::after {
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(90deg, rgba(2, 5, 8, 0.34), transparent 24%, transparent 76%, rgba(2, 5, 8, 0.34)),
-    radial-gradient(circle at center, transparent 44%, rgba(0, 0, 0, 0.26) 100%);
+    linear-gradient(90deg, rgba(7, 6, 5, 0.22), transparent 18%, transparent 82%, rgba(7, 6, 5, 0.22)),
+    radial-gradient(circle at center, transparent 46%, rgba(0, 0, 0, 0.18) 100%);
 }
 
 .noise {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  opacity: 0.24;
+  opacity: 0.16;
   background-image:
-    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.07) 0 1px, transparent 1px 3px),
-    repeating-linear-gradient(90deg, rgba(173, 202, 224, 0.03) 0 1px, transparent 1px 2px),
-    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.07), transparent 0 14%),
-    radial-gradient(circle at 78% 26%, rgba(173, 202, 224, 0.06), transparent 0 12%);
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 2px),
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.045), transparent 0 14%),
+    radial-gradient(circle at 78% 26%, rgba(255, 255, 255, 0.035), transparent 0 12%);
   mix-blend-mode: screen;
 }
 
