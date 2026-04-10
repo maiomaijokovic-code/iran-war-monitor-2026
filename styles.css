@@ -1,6 +1,6 @@
 :root {
-  --bg: #06080b;
-  --bg-soft: #0d1115;
+  --bg: #0b1117;
+  --bg-soft: #121c25;
   --panel: rgba(10, 13, 16, 0.76);
   --panel-line: rgba(232, 237, 241, 0.14);
   --text: #edf2f5;
@@ -14,7 +14,7 @@
 }
 
 html {
-  background: #040608;
+  background: #0a1117;
 }
 
 body {
@@ -25,11 +25,11 @@ body {
   color: var(--text);
   font-family: "Rajdhani", sans-serif;
   background:
-    radial-gradient(circle at 12% 18%, rgba(155, 46, 38, 0.18), transparent 0 22%),
-    radial-gradient(circle at 82% 14%, rgba(56, 94, 126, 0.2), transparent 0 26%),
-    radial-gradient(circle at 55% 58%, rgba(255, 255, 255, 0.035), transparent 0 18%),
-    linear-gradient(135deg, rgba(12, 16, 20, 0.96), rgba(5, 8, 11, 0.98)),
-    linear-gradient(180deg, rgba(18, 24, 29, 0.55), rgba(6, 8, 11, 0.82));
+    radial-gradient(circle at 14% 18%, rgba(160, 58, 47, 0.2), transparent 0 20%),
+    radial-gradient(circle at 82% 12%, rgba(77, 121, 156, 0.34), transparent 0 28%),
+    radial-gradient(circle at 52% 62%, rgba(129, 157, 180, 0.12), transparent 0 24%),
+    linear-gradient(180deg, rgba(24, 39, 52, 0.7), rgba(8, 13, 18, 0.9)),
+    linear-gradient(135deg, #182734, #0d141b 46%, #091017);
 }
 
 body::before {
@@ -50,20 +50,20 @@ body::after {
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(90deg, rgba(0, 0, 0, 0.46), transparent 28%, transparent 72%, rgba(0, 0, 0, 0.46)),
-    radial-gradient(circle at center, transparent 48%, rgba(0, 0, 0, 0.45) 100%);
+    linear-gradient(90deg, rgba(2, 5, 8, 0.34), transparent 24%, transparent 76%, rgba(2, 5, 8, 0.34)),
+    radial-gradient(circle at center, transparent 44%, rgba(0, 0, 0, 0.26) 100%);
 }
 
 .noise {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  opacity: 0.16;
+  opacity: 0.24;
   background-image:
-    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 3px),
-    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.03) 0 1px, transparent 1px 2px),
-    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.05), transparent 0 14%),
-    radial-gradient(circle at 78% 26%, rgba(255, 255, 255, 0.04), transparent 0 12%);
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.07) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgba(173, 202, 224, 0.03) 0 1px, transparent 1px 2px),
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.07), transparent 0 14%),
+    radial-gradient(circle at 78% 26%, rgba(173, 202, 224, 0.06), transparent 0 12%);
   mix-blend-mode: screen;
 }
 
