@@ -30,6 +30,9 @@ jobs:
       - name: Generate news feed
         run: python fetch_news.py
 
+      - name: Build daily crisis briefs
+        run: python build_daily_briefs_v2.py
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
