@@ -1,22 +1,4 @@
-from __future__ import annotations
 
-import json
-import hashlib
-import re
-import urllib.error
-import urllib.parse
-import urllib.request
-import xml.etree.ElementTree as ET
-from dataclasses import dataclass
-from datetime import datetime, timezone
-from email.utils import parsedate_to_datetime
-from html import unescape
-from pathlib import Path
-from urllib.parse import urlparse
-
-
-ROOT = Path(__file__).resolve().parent
-DATA_DIR = ROOT / "data"
 OUTPUT_FILE = DATA_DIR / "news.json"
 TIMEOUT_SECONDS = 20
 MAX_ITEMS_PER_SOURCE = 3
@@ -65,12 +47,10 @@ SOURCES: list[Source] = [
     Source("Financial Times", "google_news", "site:ft.com Iran"),
     Source("The Economist", "google_news", "site:economist.com Iran"),
     Source("Wall Street Journal", "google_news", "site:wsj.com Iran"),
-    Source("Washington Post", "google_news", "site:washingtonpost.com Iran"),
     Source("The Guardian", "google_news", "site:theguardian.com Iran"),
     Source("BBC", "google_news", "site:bbc.com Iran"),
     Source("Sky News", "google_news", "site:news.sky.com Iran"),
     Source("CNN", "google_news", "site:cnn.com Iran"),
-    Source("New York Times", "google_news", "site:nytimes.com Iran"),
     Source("Al Jazeera", "google_news", "site:aljazeera.com Iran"),
     Source("Middle East Eye", "google_news", "site:middleeasteye.net Iran"),
     Source("The National", "google_news", "site:thenationalnews.com Iran"),
@@ -314,6 +294,190 @@ def is_generic_subtitle(text: str) -> bool:
     return any(marker in lowered for marker in generic_markers)
 
 
+def normalize_for_comparison(text: str) -> str:
+    clean = strip_html(text).lower()
+    clean = re.sub(r"[^\w\s]", " ", clean, flags=re.UNICODE)
+    return re.sub(r"\s+", " ", clean).strip()
+
+
+def is_redundant_with_title(candidate: str, title: str) -> bool:
+    normalized_candidate = normalize_for_comparison(candidate)
+    normalized_title = normalize_for_comparison(title)
+
+    if not normalized_candidate or not normalized_title:
+        return False
+
+    if normalized_candidate == normalized_title:
+        return True
+    if normalized_title in normalized_candidate or normalized_candidate in normalized_title:
+        return True
+
+    title_words = {word for word in normalized_title.split() if len(word) > 3}
+    candidate_words = {word for word in normalized_candidate.split() if len(word) > 3}
+    if not title_words or not candidate_words:
+        return False
+
+    overlap = len(title_words & candidate_words) / max(1, len(title_words))
+    return overlap >= 0.8
+
+
+def detect_mechanism(text: str, theme: str) -> str:
+    mechanism_map = {
+        "maritime": "la leva decisiva riguarda i colli di bottiglia marittimi e la sicurezza delle rotte energetiche",
+        "diplomacy": "il nodo reale e' capire se l'apertura negoziale produce impegni credibili e verificabili",
+        "military": "il punto centrale e' se l'episodio resta circoscritto o innesca una risposta a catena",
+        "civilian": "la questione principale e' l'impatto politico e strategico dei costi umani del conflitto",
+        "economic": "la dinamica chiave passa per coercizione economica, prezzi dell'energia e vulnerabilita' degli importatori",
+        "strategic": "il punto decisivo e' la tenuta di un equilibrio regionale ancora instabile e negoziato sotto pressione",
+    }
+
+    if "sanzion" in text:
+        return "la leva usata sembra economico-finanziaria, con effetti che contano piu' nel medio periodo che nell'immediato"
+    if "petrol" in text or "oil" in text or "energia" in text:
+        return "la variabile decisiva e' energetica: prezzi, scorte e continuita' delle forniture diventano subito un fatto geopolitico"
+    if "giappone" in text or "japan" in text or "cina" in text or "india" in text:
+        return "il segnale importante e' che le ricadute non restano locali ma coinvolgono subito gli importatori asiatici e le catene di approvvigionamento"
+    return mechanism_map.get(theme, mechanism_map["strategic"])
+
+
+def detect_frame(text: str, theme: str) -> str:
+    if any(word in text for word in ("ceasefire", "tregua", "colloqui", "negozi", "mediazione", "mediat", "deadline", "ultimatum")):
+        return "commitment"
+    if any(word in text for word in ("hormuz", "shipping", "cargo", "tanker", "petrol", "oil", "energia", "sanzion", "export", "tariff")):
+        return "geoeconomic"
+    if any(word in text for word in ("bombard", "raid", "strike", "drone", "missil", "attacco", "threat", "minaccia", "ultimatum")):
+        return "deterrence"
+    if any(word in text for word in ("civili", "morti", "feriti", "sfoll", "evacu", "osped", "devastation", "casualt")):
+        return "humanitarian"
+    if any(word in text for word in ("gulf states", "golfo", "putin", "russia", "cina", "china", "europa", "europe", "pakistan", "giappone", "japan", "korea", "corea")):
+        return "order"
+    if theme == "economic":
+        return "geoeconomic"
+    if theme == "diplomacy":
+        return "commitment"
+    if theme == "military":
+        return "deterrence"
+    if theme == "civilian":
+        return "humanitarian"
+    return "regional_balance"
+
+
+def detect_secondary_actor(text: str) -> str:
+    actor_map = [
+        (("giappone", "japan"), "il Giappone"),
+        (("pakistan", "islamabad"), "il Pakistan"),
+        (("gulf states", "stati del golfo", "gulf"), "gli Stati del Golfo"),
+        (("putin", "mosca", "russia"), "la Russia"),
+        (("cina", "china", "pechino", "beijing"), "la Cina"),
+        (("europa", "bruxelles", "ue", "european union"), "l'Unione Europea"),
+        (("south korea", "corea del sud", "seoul"), "la Corea del Sud"),
+        (("pope", "papa", "vatican", "vaticano"), "il Vaticano"),
+    ]
+    for words, label in actor_map:
+        if any(word in text for word in words):
+            return label
+    return ""
+
+
+def with_preposition_da(actor: str) -> str:
+    mapping = {
+        "gli Stati Uniti": "dagli Stati Uniti",
+        "l'Iran": "dall'Iran",
+        "Israele": "da Israele",
+        "la Cina": "dalla Cina",
+        "la Russia": "dalla Russia",
+        "l'Unione Europea": "dall'Unione Europea",
+        "gli Houthi": "dagli Houthi",
+        "Hezbollah": "da Hezbollah",
+        "gli attori coinvolti": "dagli attori coinvolti",
+    }
+    return mapping.get(actor, f"da {actor}")
+
+
+def build_hook_sentence(text: str, actor: str, location: str, theme: str) -> str:
+    secondary_actor = detect_secondary_actor(text)
+
+    if "hormuz" in text and secondary_actor == "il Giappone":
+        return "Qui si vede bene come una tensione su Hormuz non resti locale: appena traffico e transiti si inceppano, i grandi importatori asiatici sono costretti a usare scorte o cercare alternative."
+    if "gulf states" in text or "stati del golfo" in text:
+        return "La notizia segnala che anche i partner regionali stanno ricalibrando le proprie scelte di sicurezza, cioe' come si proteggono senza farsi trascinare direttamente nel conflitto."
+    if secondary_actor == "la Russia":
+        return "Qui il conflitto non resta regionale: entra anche nel calcolo strategico di Mosca, che valuta costi, opportunita' e spazi di influenza."
+    if secondary_actor == "il Vaticano":
+        return "Il peso della notizia sta nel fatto che l'escalation produce ormai anche un costo politico e reputazionale fuori dal teatro strettamente militare."
+    if theme == "maritime":
+        return f"Il fatto centrale e' che la pressione {location} tocca insieme rotte, assicurazioni, approvvigionamenti e tempi della logistica energetica."
+    if theme == "diplomacy":
+        return f"Il punto immediato e' il tentativo di aprire o mantenere una finestra negoziale {location}, in un contesto in cui i segnali militari restano comunque attivi."
+    if theme == "military":
+        return f"Il nodo della notizia e' se la mossa compiuta {with_preposition_da(actor)} {location} serva a rafforzare la deterrenza oppure apra una nuova spirale di ritorsioni."
+    if theme == "economic":
+        return "La notizia mostra che energia, sanzioni, prezzi e accesso alle rotte stanno diventando parte del confronto strategico, non solo del suo contesto."
+    if theme == "civilian":
+        return "Qui il dato piu' importante e' che i costi civili del conflitto stanno acquistando un peso politico autonomo e possono cambiare i margini di scelta dei governi."
+    if secondary_actor:
+        return f"Il punto di fondo e' che la notizia coinvolge anche {secondary_actor}, segno che la crisi sta ridistribuendo costi e pressioni ben oltre il suo nucleo originario."
+    return f"Il punto di fondo e' che {actor} {location} sta ridefinendo il quadro regionale oltre il singolo episodio raccontato dal titolo."
+
+
+def build_frame_sentence(text: str, frame: str) -> str:
+    frame_map = {
+        "commitment": "In termini di relazioni internazionali, qui conta la credibilita' dell'impegno: tregue, aperture e mediazioni reggono solo se ciascuna parte teme meno di essere colpita subito dopo.",
+        "geoeconomic": "In chiave IPE, questo e' un caso di interdipendenza usata come leva: rotte, energia, sanzioni e accesso ai mercati diventano strumenti di pressione politica.",
+        "deterrence": "Sul piano strategico, il problema e' il dilemma della deterrenza: mostrare forza puo' contenere l'avversario, ma puo' anche spingerlo a reagire per non perdere credibilita'.",
+        "humanitarian": "Sul piano politico, i costi umani non restano solo morali: possono restringere la liberta' d'azione dei governi e aumentare pressioni diplomatiche, interne e internazionali.",
+        "order": "Sul piano dell'ordine regionale, la notizia segnala che partner, mediatori e grandi potenze stanno ricalibrando posizione, coperture politiche e margini di allineamento.",
+        "regional_balance": "Sul piano analitico, il dato da leggere non e' il titolo in se', ma la sequenza: annunci, minacce e mosse parziali cambiano il calcolo del rischio anche senza una svolta immediata.",
+    }
+
+    if "hormuz" in text:
+        return "In termini strategici, Hormuz pesa perche' concentra passaggi energetici cruciali: basta una minaccia credibile, non necessariamente una chiusura totale, per produrre effetti globali."
+    if "sanzion" in text:
+        return "In chiave geoeconomica, la coercizione funziona attraverso aspettative e vulnerabilita': non conta solo il danno immediato, ma anche come gli attori anticipano costi e aggiustano le scelte."
+    if "colloqui" in text or "negozi" in text or "ceasefire" in text:
+        return "La lente utile qui e' quella del commitment problem: anche quando tutti dichiarano di voler ridurre l'escalation, manca spesso la garanzia che l'altro non approfitti della pausa."
+    return frame_map.get(frame, frame_map["regional_balance"])
+
+
+def build_watch_sentence(text: str, frame: str) -> str:
+    watch_map = {
+        "commitment": "Da seguire: tempi, garanzie, verifiche e soprattutto se ai contatti politici corrispondono segnali operativi coerenti.",
+        "geoeconomic": "Da seguire: traffico marittimo, premi assicurativi, prezzi dell'energia, uso delle scorte e reazione degli importatori piu' esposti.",
+        "deterrence": "Da seguire: se all'annuncio segue una ritorsione, una pausa, oppure un nuovo ultimatum che alza ancora il costo del passo successivo.",
+        "humanitarian": "Da seguire: se l'impatto sui civili modifica consenso interno, pressione diplomatica e tono delle posizioni internazionali.",
+        "order": "Da seguire: se gli attori esterni si fermano alle dichiarazioni o spostano davvero risorse, mediazioni e coperture politiche.",
+        "regional_balance": "Da seguire: se il segnale resta isolato oppure viene assorbito in una dinamica di escalation piu' ampia nei prossimi passaggi.",
+    }
+
+    if "japan" in text or "giappone" in text or "corea del sud" in text or "south korea" in text:
+        return "Da seguire: la risposta degli importatori asiatici, perche' quando cambiano scorte, rotte o contratti si capisce subito se la crisi sta diventando sistemica."
+    if "pakistan" in text:
+        return "Da seguire: se il mediatore riesce davvero a congelare i tempi della crisi oppure se la diplomazia serve solo a guadagnare spazio tattico."
+    return watch_map.get(frame, watch_map["regional_balance"])
+
+
+def build_commentary(story: dict) -> str:
+    source_text = (
+        f"{story.get('title', '')} {story.get('summary', '')} "
+        f"{story.get('title_it', '')} {story.get('summary_it', '')}"
+    ).lower()
+    title_it = story.get("title_it") or translate_to_italian(story.get("title", ""))
+    actor = detect_actor(source_text)
+    location = detect_location(source_text)
+    theme = detect_theme(source_text)
+    frame = detect_frame(source_text, theme)
+    hook = build_hook_sentence(source_text, actor, location, theme)
+    frame_sentence = build_frame_sentence(source_text, frame)
+    watch_sentence = build_watch_sentence(source_text, frame)
+
+    comment = f"{hook} {frame_sentence} {watch_sentence}"
+
+    if is_redundant_with_title(comment, title_it):
+        comment = f"{frame_sentence} {watch_sentence}"
+
+    return re.sub(r"\s+", " ", comment).strip()
+
+
 def subtitle_from_article(url: str) -> str:
     try:
         html = fetch_text(url, timeout=ARTICLE_FETCH_TIMEOUT_SECONDS)
@@ -453,9 +617,11 @@ def enrich_story(story: dict) -> dict:
     story["summary_it"] = summary_it or story["summary"]
     subtitle = subtitle_from_article(story["url"])
     clean_summary = "" if is_generic_subtitle(story["summary"]) else story["summary"]
-    story["subtitle"] = subtitle or clean_summary
-    story["subtitle_it"] = translate_to_italian(story["subtitle"]) if story["subtitle"] else ""
-    story["comment_it"] = story["subtitle_it"]
+    chosen_subtitle = subtitle or clean_summary
+    story["subtitle"] = "" if is_redundant_with_title(chosen_subtitle, story["title"]) else chosen_subtitle
+    translated_subtitle = translate_to_italian(story["subtitle"]) if story["subtitle"] else ""
+    story["subtitle_it"] = "" if is_redundant_with_title(translated_subtitle, cleaned_title_it) else translated_subtitle
+    story["comment_it"] = build_commentary(story)
     return story
 
 
