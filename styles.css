@@ -28,7 +28,7 @@ body {
     linear-gradient(180deg, rgba(14, 12, 10, 0.34), rgba(8, 8, 8, 0.48)),
     radial-gradient(circle at 18% 16%, rgba(196, 111, 75, 0.12), transparent 0 22%),
     radial-gradient(circle at 78% 18%, rgba(210, 188, 154, 0.08), transparent 0 24%),
-    url("old-dirty-concrete-textures-background-vintage-filter-effect.jpg") center center / cover no-repeat fixed;
+    url("old-dirty-concrete-textures-background-vintage-filter-effect.jpg?v=20260410") center center / cover no-repeat;
 }
 
 body::before {
@@ -753,7 +753,9 @@ h2 {
 @media (hover: none), (pointer: coarse) {
   body {
     cursor: auto;
-    background-attachment: scroll;
+    background-position: center top;
+    background-size: auto 100vh;
+    background-repeat: repeat-y;
   }
 
   a,
