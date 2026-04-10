@@ -103,7 +103,7 @@ function renderStories(stories) {
             <a class="feed-link" href="${story.url}" target="_blank" rel="noreferrer">
               ${cleanTitleForDisplay(story.title_it || story.title || "", story.source || "", story.url || "")}
             </a>
-            <p class="feed-note">${story.comment_it || fallbackCommentary(story)}</p>
+            <p class="feed-note">${story.lead_sentence_it || story.lead_sentence || story.comment_it || story.summary_it || story.summary || "Apri il link per leggere il testo completo."}</p>
           </div>
         </article>
       `

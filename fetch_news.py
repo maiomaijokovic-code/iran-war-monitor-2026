@@ -21,6 +21,7 @@ OUTPUT_FILE = DATA_DIR / "news.json"
 TIMEOUT_SECONDS = 20
 MAX_ITEMS_PER_SOURCE = 3
 MAX_SUMMARY_LENGTH = 260
+ARTICLE_FETCH_TIMEOUT_SECONDS = 8
 
 USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -99,6 +100,36 @@ SOURCES: list[Source] = [
     Source("DGAP", "google_news", "site:dgap.org Iran"),
     Source("German Marshall Fund", "google_news", "site:gmfus.org Iran"),
     Source("ECFR", "google_news", "site:ecfr.eu Iran"),
+    # Additional requested sources
+    Source("The Telegraph", "google_news", "site:telegraph.co.uk Iran"),
+    Source("Le Monde", "google_news", "site:lemonde.fr Iran"),
+    Source("Institute for the Study of War", "google_news", "site:understandingwar.org Iran middle east"),
+    Source("Defense News", "google_news", "site:defensenews.com Iran"),
+    Source("Foreign Policy", "google_news", "site:foreignpolicy.com Iran Israel conflict"),
+    Source("War on the Rocks", "google_news", "site:warontherocks.com Iran"),
+    Source("International Crisis Group", "google_news", "site:crisisgroup.org Iran"),
+    Source("Analisi Difesa", "google_news", "site:analisidifesa.it Iran"),
+    Source("NPR", "google_news", "site:npr.org Iran"),
+    Source("Asharq Al-Awsat", "google_news", "site:english.aawsat.com Iran"),
+    Source("Politico", "google_news", "site:politico.com Iran"),
+    Source("Al Arabiya English", "google_news", "site:english.alarabiya.net Iran"),
+    Source("Arab News", "google_news", "site:arabnews.com Iran"),
+    Source("The New Arab", "google_news", "site:newarab.com Iran"),
+    Source("Al-Monitor", "google_news", "site:al-monitor.com Iran"),
+    Source("IRNA English", "google_news", "site:en.irna.ir Iran"),
+    Source("Tasnim News", "google_news", "site:tasnimnews.com/en Iran"),
+    Source("Mehr News", "google_news", "site:en.mehrnews.com Iran"),
+    Source("Press TV", "google_news", "site:presstv.ir Iran"),
+    Source("Iran International", "google_news", "site:iranintl.com Iran"),
+    Source("The Times of Israel", "google_news", "site:timesofisrael.com Iran"),
+    Source("Haaretz", "google_news", "site:haaretz.com Iran"),
+    Source("The Jerusalem Post", "google_news", "site:jpost.com Iran"),
+    Source("i24NEWS", "google_news", "site:i24news.tv Iran"),
+    Source("Saudi Press Agency", "google_news", "site:spa.gov.sa/en Iran"),
+    Source("WAM Emirates News Agency", "google_news", "site:wam.ae/en Iran"),
+    Source("Qatar News Agency", "google_news", "site:qna.org.qa/en Iran"),
+    Source("Bahrain News Agency", "google_news", "site:bna.bh/en Iran"),
+    Source("KUNA", "google_news", "site:kuna.net.kw Iran"),
 ]
 
 
@@ -110,9 +141,9 @@ def build_feed_url(source: Source) -> str:
     return f"https://news.google.com/rss/search?q={encoded_query}&hl=en-US&gl=US&ceid=US:en"
 
 
-def fetch_text(url: str) -> str:
+def fetch_text(url: str, timeout: int = TIMEOUT_SECONDS) -> str:
     request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-    with urllib.request.urlopen(request, timeout=TIMEOUT_SECONDS) as response:
+    with urllib.request.urlopen(request, timeout=timeout) as response:
         return response.read().decode("utf-8", errors="replace")
 
 
@@ -223,82 +254,47 @@ def detect_theme(text: str) -> str:
     return "strategic"
 
 
-def infer_commentary(summary_it: str, title_it: str, source_name: str) -> str:
-    text = f"{title_it} {summary_it}".lower()
-    actor = detect_actor(text)
-    location = detect_location(text)
-    theme = detect_theme(text)
-    seed = f"{source_name}|{title_it}|{summary_it}"
+def extract_first_sentence(text: str) -> str:
+    clean = re.sub(r"\s+", " ", strip_html(text)).strip()
+    if not clean:
+        return ""
+    match = re.match(r"(.{20,280}?[.!?])(\s|$)", clean)
+    if match:
+        return match.group(1).strip()
+    return clean[:220].rstrip()
 
-    intros = {
-        "diplomacy": [
-            f"Il punto chiave è che {actor} stanno cercando di spostare il confronto su un piano negoziale {location}.",
-            f"La notizia segnala soprattutto un passaggio diplomatico, con {actor} che provano a ridefinire i margini del confronto {location}.",
-            f"Qui il dato rilevante è l'apertura di una finestra politica: {actor} cercano di contenere l'escalation {location}.",
-        ],
-        "maritime": [
-            f"Il baricentro della notizia è marittimo: la pressione {location} tocca direttamente rotte, transiti e percezione del rischio.",
-            f"Il segnale più importante riguarda la sicurezza dei flussi commerciali {location}, dove ogni frizione può produrre effetti rapidi.",
-            f"Questa è soprattutto una notizia di vulnerabilità marittima: ciò che accade {location} pesa oltre il singolo episodio.",
-        ],
-        "military": [
-            f"Il contenuto indica una dinamica di escalation tattica, con {actor} che alzano la pressione {location}.",
-            f"Qui il dato principale è operativo-militare: {actor} testano soglie e deterrenza {location}.",
-            f"La notizia suggerisce un incremento della pressione sul piano militare, con effetti immediati {location}.",
-        ],
-        "civilian": [
-            f"Il punto centrale è il rischio per la popolazione civile {location}, più che il solo valore militare dell'episodio.",
-            f"La notizia pesa soprattutto sul piano umanitario: i costi civili {location} rischiano di ridefinire anche la risposta politica.",
-            f"Il profilo più sensibile qui è civile: ciò che accade {location} può amplificare pressione diplomatica e narrativa.",
-        ],
-        "economic": [
-            f"Il valore della notizia è nel canale economico: {actor} incidono su prezzi, approvvigionamenti e aspettative {location}.",
-            f"Qui non conta solo il piano politico, ma l'effetto economico che può irradiarsi {location} e oltre.",
-            f"La notizia segnala una pressione economica indiretta: ciò che si muove {location} può riflettersi su energia e commercio.",
-        ],
-        "strategic": [
-            f"La notizia rafforza un quadro regionale ancora instabile, con {actor} sotto pressione {location}.",
-            f"Il punto più utile da osservare è come {actor} ridefiniscono il quadro strategico {location}.",
-            f"Il dato va letto come un segnale di riequilibrio incompleto, con effetti ancora aperti {location}.",
-        ],
-    }
 
-    implications = {
-        "diplomacy": [
-            "La variabile decisiva adesso è capire se alle dichiarazioni seguiranno misure concrete di de-escalation nelle prossime 24-48 ore.",
-            "Se questo canale regge, può rallentare la spirale immediata; se fallisce, il ritorno alla pressione militare sarebbe rapido.",
-            "Il passaggio successivo da monitorare è la tenuta del tavolo politico, non solo la retorica pubblica.",
-        ],
-        "maritime": [
-            "Da monitorare soprattutto transiti, deviazioni di rotta e costo percepito del rischio commerciale nelle prossime ore.",
-            "L'effetto sistemico non è solo locale: se il segnale si ripete, possono crescere rapidamente stress logistico ed energia.",
-            "Il vero test sarà vedere se l'episodio resta isolato o modifica i comportamenti degli operatori marittimi.",
-        ],
-        "military": [
-            "Nel breve conta capire se l'episodio resta isolato o apre una sequenza di risposta e contro-risposta.",
-            "Il rischio non è solo il singolo evento, ma la normalizzazione di una soglia più alta di confronto.",
-            "Il prossimo indicatore utile è la continuità operativa: una replica a stretto giro cambierebbe la lettura strategica.",
-        ],
-        "civilian": [
-            "Se questi segnali aumentano, cresce anche la probabilità di pressione diplomatica esterna e polarizzazione narrativa.",
-            "Il passaggio decisivo sarà verificare se l'impatto civile resta periferico o diventa un elemento centrale della crisi.",
-            "Più dei movimenti militari, qui conta la capacità degli attori di contenere i costi umani e simbolici.",
-        ],
-        "economic": [
-            "Il prossimo passaggio da seguire è se il segnale resta retorico o si traduce in effetti misurabili su energia e supply chain.",
-            "Se il tema si consolida, l'impatto può uscire rapidamente dal piano regionale e riflettersi su mercati e traffici.",
-            "La chiave interpretativa è distinguere tra pressione negoziale e danno economico effettivo.",
-        ],
-        "strategic": [
-            "La chiave resta la continuità degli eventi: senza follow-up, il segnale pesa meno; con ripetizione, cambia il quadro.",
-            "Per capire il valore reale della notizia bisogna osservare se produce imitazione, allineamento o reazione tra attori vicini.",
-            "Nel breve il punto non è solo l'episodio, ma la sua capacità di spostare aspettative e postura regionale.",
-        ],
-    }
+def first_sentence_from_article(url: str) -> str:
+    try:
+        html = fetch_text(url, timeout=ARTICLE_FETCH_TIMEOUT_SECONDS)
+    except Exception:
+        return ""
 
-    first = pick_variant(seed + "|intro", intros[theme])
-    second = pick_variant(seed + "|implication", implications[theme])
-    return f"{first} {second}"
+    meta_patterns = [
+        r'<meta[^>]+property=["\']og:description["\'][^>]+content=["\']([^"\']+)["\']',
+        r'<meta[^>]+name=["\']description["\'][^>]+content=["\']([^"\']+)["\']',
+    ]
+    for pattern in meta_patterns:
+        meta_match = re.search(pattern, html, flags=re.IGNORECASE)
+        if meta_match:
+            sentence = extract_first_sentence(meta_match.group(1))
+            if len(sentence) >= 30:
+                return sentence
+
+    body = re.sub(r"<script[\s\S]*?</script>", " ", html, flags=re.IGNORECASE)
+    body = re.sub(r"<style[\s\S]*?</style>", " ", body, flags=re.IGNORECASE)
+    paragraphs = re.findall(r"<p[^>]*>(.*?)</p>", body, flags=re.IGNORECASE | re.DOTALL)
+
+    for para in paragraphs:
+        sentence = extract_first_sentence(para)
+        if len(sentence) < 35:
+            continue
+        lowered = sentence.lower()
+        if any(skip in lowered for skip in ("cookie", "subscribe", "newsletter", "advertis", "consent")):
+            continue
+        return sentence
+
+    return ""
 
 
 def translate_to_italian(text: str) -> str:
@@ -388,7 +384,10 @@ def enrich_story(story: dict) -> dict:
     cleaned_title_it = cleanup_title(title_it or story["title"], story["source"], story["url"])
     story["title_it"] = cleaned_title_it
     story["summary_it"] = summary_it or story["summary"]
-    story["comment_it"] = infer_commentary(story["summary_it"], story["title_it"], story["source"])
+    lead_sentence = first_sentence_from_article(story["url"])
+    story["lead_sentence"] = lead_sentence or story["summary"]
+    story["lead_sentence_it"] = translate_to_italian(story["lead_sentence"]) if story["lead_sentence"] else story["summary_it"]
+    story["comment_it"] = story["lead_sentence_it"]
     return story
 
 
